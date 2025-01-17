@@ -1,0 +1,267 @@
+.feld {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background-color: var(--color-white);
+    width: 1920px;
+    height: 1080px;
+}
+.rand-child {
+    position: absolute;
+    top: 1010.39px;
+    left: 180px;
+    background-color: var(--color-gainsboro);
+    width: 1560px;
+    height: 69.6px;
+}
+.rand-item {
+    position: absolute;
+    top: 117.07px;
+    left: 1699px;
+    width: 221px;
+    height: 962.9px;
+}
+.rand-inner {
+    position: absolute;
+    top: 1080px;
+    left: 220px;
+    border-radius: 0px var(--br-17xl) 0px 0px;
+    background-color: var(--color-gainsboro);
+    width: 220px;
+    height: 963px;
+    transform:  rotate(-180deg);
+    transform-origin: 0 0;
+}
+.rectangle-div {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border-radius: var(--br-17xl) var(--br-17xl) 0px 0px;
+    background-color: var(--color-gainsboro);
+    width: 1920px;
+    height: 187.7px;
+}
+.rand {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 1920px;
+    height: 1080px;
+}
+.reihe1-child {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background-color: var(--color-gray-100);
+    border: 1px solid var(--color-black);
+    box-sizing: border-box;
+    width: 164.4px;
+    height: 164.4px;
+}
+.reihe1-item {
+    position: absolute;
+    top: 0px;
+    left: 164.4px;
+    background-color: var(--color-darkgray);
+    border: 1px solid var(--color-black);
+    box-sizing: border-box;
+    width: 164.4px;
+    height: 164.4px;
+}
+.reihe1-inner {
+    position: absolute;
+    top: 0px;
+    left: 328.8px;
+    background-color: var(--color-gray-100);
+    border: 1px solid var(--color-black);
+    box-sizing: border-box;
+    width: 164.4px;
+    height: 164.4px;
+}
+.reihe1-child1 {
+    position: absolute;
+    top: 0px;
+    left: 493.2px;
+    background-color: var(--color-darkgray);
+    border: 1px solid var(--color-black);
+    box-sizing: border-box;
+    width: 164.4px;
+    height: 164.4px;
+}
+.reihe1-child2 {
+    position: absolute;
+    top: 0px;
+    left: 657.6px;
+    background-color: var(--color-gray-100);
+    border: 1px solid var(--color-black);
+    box-sizing: border-box;
+    width: 164.4px;
+    height: 164.4px;
+}
+.reihe1-child3 {
+    position: absolute;
+    top: 0px;
+    left: 822px;
+    background-color: var(--color-darkgray);
+    border: 1px solid var(--color-black);
+    box-sizing: border-box;
+    width: 164.4px;
+    height: 164.4px;
+}
+.reihe1-child4 {
+    position: absolute;
+    top: 0px;
+    left: 986.4px;
+    background-color: var(--color-gray-100);
+    border: 1px solid var(--color-black);
+    box-sizing: border-box;
+    width: 164.4px;
+    height: 164.4px;
+}
+.reihe1-child5 {
+    position: absolute;
+    top: 0px;
+    left: 1150.8px;
+    background-color: var(--color-darkgray);
+    border: 1px solid var(--color-black);
+    box-sizing: border-box;
+    width: 164.4px;
+    height: 164.4px;
+}
+.reihe1-child6 {
+    position: absolute;
+    top: 0px;
+    left: 1315.2px;
+    background-color: var(--color-gray-100);
+    border: 1px solid var(--color-black);
+    box-sizing: border-box;
+    width: 164.4px;
+    height: 164.4px;
+}
+.reihe1 {
+    position: absolute;
+    top: 657.6px;
+    left: 0px;
+    width: 1479.6px;
+    height: 164.4px;
+}
+.reihe3 {
+    position: absolute;
+    top: 493.2px;
+    left: 0px;
+    width: 1479.6px;
+    height: 164.4px;
+}
+.reihe4 {
+    position: absolute;
+    top: 328.8px;
+    left: 0px;
+    width: 1479.6px;
+    height: 164.4px;
+}
+.reihe5 {
+    position: absolute;
+    top: 164.4px;
+    left: 0px;
+    width: 1479.6px;
+    height: 164.4px;
+}
+.reihe6 {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 1479.6px;
+    height: 164.4px;
+}
+.felder {
+    position: absolute;
+    top: 188px;
+    left: 220px;
+    width: 1479.6px;
+    height: 822px;
+}
+.inventar1 {
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    border-radius: var(--br-xs);
+    background-color: var(--color-white);
+    border: 3px solid var(--color-black);
+    box-sizing: border-box;
+    width: 766px;
+    height: 147px;
+}
+.inventar-child {
+    position: absolute;
+    top: -3px;
+    left: 99px;
+    border-radius: 0px var(--br-xs) var(--br-xs) 0px;
+    background-color: var(--color-white);
+    border: 3px solid var(--color-black);
+    box-sizing: border-box;
+    width: 664px;
+    height: 147px;
+}
+.inventar-item {
+    position: absolute;
+    top: 40px;
+    left: 20px;
+    border-radius: 50%;
+    background-color: var(--color-white);
+    border: 1px solid var(--color-black);
+    box-sizing: border-box;
+    width: 60px;
+    height: 60px;
+}
+.inventar-inner {
+    position: absolute;
+    top: 100px;
+    left: 12px;
+    background-color: var(--color-white);
+    border: 1px solid var(--color-black);
+    box-sizing: border-box;
+    width: 76px;
+    height: 27px;
+}
+.inventar {
+    position: absolute;
+    top: 19px;
+    left: 25px;
+    width: 760px;
+    height: 141px;
+}
+.men1 {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border-radius: 0px 0px var(--br-xs) var(--br-xs);
+    background-color: var(--color-black);
+    border: 1px solid var(--color-black);
+    box-sizing: border-box;
+    width: 169px;
+    height: 59px;
+}
+.men2 {
+    position: absolute;
+    top: 12px;
+    left: 35px;
+}
+.men {
+    position: absolute;
+    top: 0px;
+    left: 1530px;
+    width: 169px;
+    height: 59px;
+}
+.desktop-1 {
+    width: 100%;
+    position: relative;
+    background-color: rgba(255, 255, 255, 0);
+    height: 1080px;
+    overflow: hidden;
+    text-align: left;
+    font-size: 32px;
+    color: #f91414;
+    font-family: var(--font-soloist);
+}
+
