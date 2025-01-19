@@ -11,14 +11,12 @@ body {
     --font-soloist: Soloist;
     
     /* Colors */
-    --color-gray-100: #818479;
     --color-black: #000;
     --color-white: #fff;
+    --color-gray: #818479;
     --color-darkgray: #aeb2a4;
-    --color-gainsboro: #d9d9d9;
     
     /* Border radiuses */
     --br-xs: 12px;
-    --br-17xl: 36px;
     
 }

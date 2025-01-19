@@ -2,63 +2,45 @@
     position: absolute;
     top: 0px;
     left: 0px;
+    background-color: var(--color-black);
+    width: 1920px;
+    height: 1080px;
+}
+.men1 {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border-radius: 0px 0px var(--br-xs) var(--br-xs);
     background-color: var(--color-white);
-    width: 1920px;
-    height: 1080px;
+    border: 1px solid var(--color-black);
+    box-sizing: border-box;
+    width: 169px;
+    height: 59px;
 }
-.rand-child {
+.men2 {
     position: absolute;
-    top: 1010.39px;
-    left: 180px;
-    background-color: var(--color-gainsboro);
-    width: 1560px;
-    height: 69.6px;
+    top: 12px;
+    left: 35px;
+    text-shadow: 1px 0 0 #000, 0 1px 0 #000, -1px 0 0 #000, 0 -1px 0 #000;
 }
-.rand-item {
+.men {
     position: absolute;
-    top: 117.07px;
-    left: 1699px;
-    width: 221px;
-    height: 962.9px;
+    top: 0px;
+    left: 1530px;
+    width: 169px;
+    height: 59px;
 }
-.rand-inner {
-    position: absolute;
-    top: 1080px;
-    left: 220px;
-    border-radius: 0px var(--br-17xl) 0px 0px;
-    background-color: var(--color-gainsboro);
-    width: 220px;
-    height: 963px;
-    transform:  rotate(-180deg);
-    transform-origin: 0 0;
-}
-.rectangle-div {
+.s1 {
     position: absolute;
     top: 0px;
     left: 0px;
-    border-radius: var(--br-17xl) var(--br-17xl) 0px 0px;
-    background-color: var(--color-gainsboro);
-    width: 1920px;
-    height: 187.7px;
-}
-.rand {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    width: 1920px;
-    height: 1080px;
-}
-.reihe1-child {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    background-color: var(--color-gray-100);
+    background-color: var(--color-gray);
     border: 1px solid var(--color-black);
     box-sizing: border-box;
     width: 164.4px;
     height: 164.4px;
 }
-.reihe1-item {
+.s2 {
     position: absolute;
     top: 0px;
     left: 164.4px;
@@ -68,17 +50,17 @@
     width: 164.4px;
     height: 164.4px;
 }
-.reihe1-inner {
+.s3 {
     position: absolute;
     top: 0px;
     left: 328.8px;
-    background-color: var(--color-gray-100);
+    background-color: var(--color-gray);
     border: 1px solid var(--color-black);
     box-sizing: border-box;
     width: 164.4px;
     height: 164.4px;
 }
-.reihe1-child1 {
+.s4 {
     position: absolute;
     top: 0px;
     left: 493.2px;
@@ -88,17 +70,17 @@
     width: 164.4px;
     height: 164.4px;
 }
-.reihe1-child2 {
+.s5 {
     position: absolute;
     top: 0px;
     left: 657.6px;
-    background-color: var(--color-gray-100);
+    background-color: var(--color-gray);
     border: 1px solid var(--color-black);
     box-sizing: border-box;
     width: 164.4px;
     height: 164.4px;
 }
-.reihe1-child3 {
+.s6 {
     position: absolute;
     top: 0px;
     left: 822px;
@@ -108,17 +90,17 @@
     width: 164.4px;
     height: 164.4px;
 }
-.reihe1-child4 {
+.s7 {
     position: absolute;
     top: 0px;
     left: 986.4px;
-    background-color: var(--color-gray-100);
+    background-color: var(--color-gray);
     border: 1px solid var(--color-black);
     box-sizing: border-box;
     width: 164.4px;
     height: 164.4px;
 }
-.reihe1-child5 {
+.s8 {
     position: absolute;
     top: 0px;
     left: 1150.8px;
@@ -128,11 +110,11 @@
     width: 164.4px;
     height: 164.4px;
 }
-.reihe1-child6 {
+.s9 {
     position: absolute;
     top: 0px;
     left: 1315.2px;
-    background-color: var(--color-gray-100);
+    background-color: var(--color-gray);
     border: 1px solid var(--color-black);
     box-sizing: border-box;
     width: 164.4px;
@@ -145,28 +127,28 @@
     width: 1479.6px;
     height: 164.4px;
 }
-.reihe3 {
+.reihe2 {
     position: absolute;
     top: 493.2px;
     left: 0px;
     width: 1479.6px;
     height: 164.4px;
 }
-.reihe4 {
+.reihe3 {
     position: absolute;
     top: 328.8px;
     left: 0px;
     width: 1479.6px;
     height: 164.4px;
 }
-.reihe5 {
+.reihe4 {
     position: absolute;
     top: 164.4px;
     left: 0px;
     width: 1479.6px;
     height: 164.4px;
 }
-.reihe6 {
+.reihe5 {
     position: absolute;
     top: 0px;
     left: 0px;
@@ -230,38 +212,15 @@
     width: 760px;
     height: 141px;
 }
-.men1 {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    border-radius: 0px 0px var(--br-xs) var(--br-xs);
-    background-color: var(--color-black);
-    border: 1px solid var(--color-black);
-    box-sizing: border-box;
-    width: 169px;
-    height: 59px;
-}
-.men2 {
-    position: absolute;
-    top: 12px;
-    left: 35px;
-}
-.men {
-    position: absolute;
-    top: 0px;
-    left: 1530px;
-    width: 169px;
-    height: 59px;
-}
 .desktop-1 {
     width: 100%;
     position: relative;
-    background-color: rgba(255, 255, 255, 0);
+    background-color: var(--color-black);
     height: 1080px;
     overflow: hidden;
     text-align: left;
     font-size: 32px;
-    color: #f91414;
+    color: var(--color-gray);
     font-family: var(--font-soloist);
 }
 
