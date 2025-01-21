@@ -7,13 +7,14 @@ var updateID;
 var createID;
 var score = 0; 
 
-export class Currency {
+class Currency {
     constructor() {
-        this.x = Math.random() * flipchart.width; 
-        this.y = 0;
         this.bild = new Image();
-        this.bild.src = "sun_test.png";
-        this.scale = 0.2;
+        this.bild.src = "coupon_currency.png";
+        this.x = Math.random() * (flipchart.width - 100); 
+        this.y = 0;
+
+        this.scale = 0.15;
 
         this.bild.onload = () => {
             this.width = this.bild.width * this.scale;
@@ -37,7 +38,7 @@ export class Currency {
     };
 }
 
-export function onload() {
+function onload() {
     updateID = window.setInterval(() => {
         update();
     }, 10);
@@ -65,13 +66,13 @@ export function onload() {
     });
 }
 
-export function update() {
+function update() {
     currencies.forEach((currency) => {
         currency.fall();
     });
 }
 
-export function draw() {
+function draw() {
     papier.clearRect(0, 0, flipchart.width, flipchart.height);
     currencies.forEach((currency) => {
         if (currency.width && currency.height) {
