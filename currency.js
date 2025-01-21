@@ -5,11 +5,11 @@ var currencies = [];
 var drawID;
 var updateID;
 var createID;
-var score = 0; // Variable zur Speicherung des Punktestands
+var score = 0; 
 
 class Currency {
     constructor() {
-        this.x = Math.random() * flipchart.width; // Zufällige X-Position
+        this.x = Math.random() * flipchart.width; 
         this.y = 0;
         this.bild = new Image();
         this.bild.src = "sun_test.png";
@@ -53,13 +53,13 @@ function onload() {
         const mouseX = e.clientX - rect.left;
         const mouseY = e.clientY - rect.top;
 
-        // Prüfen, ob ein Currency-Objekt angeklickt wurde
+
         for (let i = currencies.length - 1; i >= 0; i--) {
             if (currencies[i].contains(mouseX, mouseY)) {
-                score += 50; // Punktestand erhöhen
-                console.log(`Score: ${score}`); // Punktestand in der Konsole ausgeben
-                currencies.splice(i, 1); // Objekt entfernen
-                break; // Nur ein Objekt pro Klick entfernen
+                score += 50;
+                console.log(`Score: ${score}`); 
+                currencies.splice(i, 1);
+                break;
             }
         }
     });
