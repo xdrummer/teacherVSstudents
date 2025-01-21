@@ -9,12 +9,12 @@ var score = 0;
 
 class Currency {
     constructor() {
-        this.x = Math.random() * (flipchart.width - 200); 
-        this.y = 0;
-        this.speed = 0.7; // fall speed
         this.bild = new Image();
-        this.bild.src = "sun_test.png";
-        this.scale = 0.2;
+        this.bild.src = "coupon_currency.png";
+        this.x = Math.random() * (flipchart.width - 100); 
+        this.y = 0;
+
+        this.scale = 0.15;
 
         this.bild.onload = () => {
             this.width = this.bild.width * this.scale;
