@@ -7,7 +7,7 @@ var updateID;
 var createID;
 var score = 0; 
 
-class Currency {
+export class Currency {
     constructor() {
         this.x = Math.random() * flipchart.width; 
         this.y = 0;
@@ -37,7 +37,7 @@ class Currency {
     };
 }
 
-function onload() {
+export function onload() {
     updateID = window.setInterval(() => {
         update();
     }, 10);
@@ -65,13 +65,13 @@ function onload() {
     });
 }
 
-function update() {
+export function update() {
     currencies.forEach((currency) => {
         currency.fall();
     });
 }
 
-function draw() {
+export function draw() {
     papier.clearRect(0, 0, flipchart.width, flipchart.height);
     currencies.forEach((currency) => {
         if (currency.width && currency.height) {
