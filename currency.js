@@ -9,8 +9,9 @@ var score = 0;
 
 class Currency {
     constructor() {
-        this.x = Math.random() * flipchart.width; 
+        this.x = Math.random() * (flipchart.width - 200); 
         this.y = 0;
+        this.speed = 0.7; // fall speed
         this.bild = new Image();
         this.bild.src = "sun_test.png";
         this.scale = 0.2;
@@ -23,7 +24,7 @@ class Currency {
 
     fall = function () {
         if (this.y < flipchart.height - this.height) {
-            this.y = this.y + 1;
+            this.y = this.y + this.speed;
         }
     };
 
@@ -69,6 +70,10 @@ function update() {
     currencies.forEach((currency) => {
         currency.fall();
     });
+
+
+    document.getElementById('cur_board').innerHTML = score;
+
 }
 
 function draw() {
