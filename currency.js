@@ -1,4 +1,6 @@
-var flipchart = document.getElementById("Canvas");
+import { Spielfeldzeichnen } from "./Spielfeld.js";
+
+var flipchart = document.getElementById("Spielfeld");
 var papier = flipchart.getContext("2d");
 
 var currencies = [];
@@ -7,12 +9,20 @@ var updateID;
 var createID;
 var score = 0; 
 
-class Currency {
+
+
+window.addEventListener("load", () => {
+    onload();
+});
+
+
+export class Currency {
     constructor() {
         this.bild = new Image();
         this.bild.src = "coupon_currency.png";
-        this.x = Math.random() * (flipchart.width - 100); 
-        this.y = 0;
+        this.x = Math.random() * (1000 - 200) + 200
+        this.y = 200;
+        this.speed = 0.5;
 
         this.scale = 0.15;
 
@@ -23,7 +33,7 @@ class Currency {
     }
 
     fall = function () {
-        if (this.y < flipchart.height - this.height) {
+        if (this.y < flipchart.height - 350 - this.height) {
             this.y = this.y + this.speed;
         }
     };
@@ -38,7 +48,7 @@ class Currency {
     };
 }
 
-function onload() {
+export function onload() {
     updateID = window.setInterval(() => {
         update();
     }, 10);
@@ -66,7 +76,7 @@ function onload() {
     });
 }
 
-function update() {
+export function update() {
     currencies.forEach((currency) => {
         currency.fall();
     });
@@ -76,13 +86,16 @@ function update() {
 
 }
 
-function draw() {
+export function draw() {
     papier.clearRect(0, 0, flipchart.width, flipchart.height);
+    Spielfeldzeichnen();
     currencies.forEach((currency) => {
         if (currency.width && currency.height) {
             papier.drawImage(currency.bild, currency.x, currency.y, currency.width, currency.height);
         }
     });
 
+
+    
     drawID = window.requestAnimationFrame(draw);
 }
