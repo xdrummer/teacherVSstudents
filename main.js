@@ -2,14 +2,14 @@ import * as cur from "./currency.js";
 import * as spielF from "./Spielfeld.js";
 
 
-export var flipchart = document.getElementById("Spielfeld");
-export var papier = flipchart.getContext("2d");
+var flipchart = document.getElementById("Spielfeld");
+var papier = flipchart.getContext("2d");
 
 
 
-export var drawID;
-export var cur_updateID;
-export var createID;
+var drawID;
+var cur_updateID;
+var createID;
 
 
 window.addEventListener("load", () => {
@@ -19,7 +19,7 @@ window.addEventListener("load", () => {
 
 
 
-export function onload() {
+function onload() {
     cur_updateID = window.setInterval(() => {
         cur.cur_update();
     }, 10);                                                            
@@ -48,7 +48,7 @@ export function onload() {
 }
 
 
-export function draw() {
+function draw() {
     papier.clearRect(0, 0, flipchart.width, flipchart.height);
     spielF.Spielfeldzeichnen();
     cur.currencies.forEach((currency) => {                                                                  
