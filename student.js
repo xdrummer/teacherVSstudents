@@ -1,14 +1,14 @@
 class Student{
     constructor(field, cost, buyCooldown, healthPoints, attackCooldown, attackDamage){
-        var position = field; // Feld 
-        var cost = cost;  // Int 
-        var buyCooldown = buyCooldown;  // Int in Sekunden
-        var healthPoints = healthPoints; // Int 
-        var attackCooldown = attackCooldown; // Int
-        var attackDamage = attackDamage;// Int
-
-        var src1
-        var lastShot // TimeStamp
+        this.position = field; // Feld 
+        this.cost = cost;  // Int 
+        this.buyCooldown = buyCooldown;  // Int in Sekunden
+        this.healthPoints = healthPoints; // Int 
+        this.attackCooldown = attackCooldown; // Int
+        this.attackDamage = attackDamage;// Int
+        this.projectiles = []
+        this.src1
+        this.lastShot // TimeStamp
 
     }
 
@@ -28,24 +28,38 @@ class Student{
 
 }
 
-export class Geniesser extends Student{
-    constructor(){
-        this.src1 //Pfad zum Skin
-        this.src2 = "/assets/cork.png"// Pfad zum Schuss
+export class Projectile{
+    constructor(
+        src2,x,y,v,s
+    ){
+        this.src2 = src// Pfad zum Schuss
 
         this.cork = new Image()
         this.cork.src = src2
         
-        this.x = Math.random() * (1000 - 200) + 200
-        this.y = 200;
-        this.speed = 0.5;
+        this.x = x
+        this.y = y
+        this.speed = v
 
-        this.scale = 0.15;
+        this.scale = s
 
         this.cork.onload = () => {
             this.width = this.bild.width * this.scale;
             this.height = this.bild.height * this.scale;
         };
+    }
+
+    updatePosition = function(){
+        this.x = x + speed;
+    }
+}
+
+
+export class Geniesser extends Student{
+    constructor(){
+        this.src1 //Pfad zum Skin
+        
+        
     
 
     
@@ -54,11 +68,8 @@ export class Geniesser extends Student{
     shoot = function(){
         const now = Date.now();
 
-        if(now-this.lastShot > this.attackCooldown){ //TODO Hitboxen
-            
-            //TODO Move
-
-
+        if(now-this.lastShot > this.attackCooldown){ 
+            this.projectiles.push(new Projectile("/assets/cork.png"))
             this.lastShot = now;
         }
     }

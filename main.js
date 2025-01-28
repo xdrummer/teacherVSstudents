@@ -1,6 +1,7 @@
 import * as cur from "./currency.js";
 import * as spielF from "./Spielfeld.js";
 import * as teach from "./teacher.js";
+import * as student from "./student.js";
 
 
 var flipchart = document.getElementById("Spielfeld");
@@ -12,7 +13,7 @@ var drawID;
 var cur_updateID;
 var createID;
 var cur_DespawnID;
-
+var student_updateID;
 
 window.addEventListener("load", () => {
     onload();                                                                   // Einfaches onload im body funktioniert warum auch immer nicht
@@ -65,6 +66,13 @@ function draw() {
         papier.drawImage(currency.bild, currency.x, currency.y, currency.width, currency.height);
         
     });
+
+    student.students.forEach((stu) => {
+        stu.projectiles.forEach((proj) =>{
+            papier.drawImage(proj.cork, proj.x, proj.y, proj.width, proj.height)
+        })
+    }
+    )
 
 
     
