@@ -1,3 +1,5 @@
+export var students = []
+
 class Student{
     constructor(field, cost, buyCooldown, healthPoints, attackCooldown, attackDamage){
         this.position = field; // Feld 
