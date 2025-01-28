@@ -7,6 +7,7 @@ class Student{
         var attackCooldown = attackCooldown; // Int
         var attackDamage = attackDamage;// Int
 
+        var src1
         var lastShot // TimeStamp
 
     }
@@ -22,18 +23,45 @@ class Student{
 
     } // ruft evtl. Shoot auf
     shoot = function(){
-        const now = Date.now();
-
-        if(now-this.lastShot > this.attackCooldown){
-            console.log("Schuss")
-            this.lastShot = now;
-        }
+        
     }
 
 }
 
-export class Mika extends Student{
+export class Geniesser extends Student{
     constructor(){
-        this.img = //Pfad
+        this.src1 //Pfad zum Skin
+        this.src2 = "/assets/cork.png"// Pfad zum Schuss
+
+        this.cork = new Image()
+        this.cork.src = src2
+        
+        this.x = Math.random() * (1000 - 200) + 200
+        this.y = 200;
+        this.speed = 0.5;
+
+        this.scale = 0.15;
+
+        this.cork.onload = () => {
+            this.width = this.bild.width * this.scale;
+            this.height = this.bild.height * this.scale;
+        };
+    
+
+    
     }
+
+    shoot = function(){
+        const now = Date.now();
+
+        if(now-this.lastShot > this.attackCooldown){ //TODO Hitboxen
+            
+            //TODO Move
+
+
+            this.lastShot = now;
+        }
+    }
+
+
 }
