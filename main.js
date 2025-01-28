@@ -1,5 +1,6 @@
 import * as cur from "./currency.js";
 import * as spielF from "./Spielfeld.js";
+import * as teach from "./teacher.js";
 
 
 var flipchart = document.getElementById("Spielfeld");
@@ -10,6 +11,7 @@ var papier = flipchart.getContext("2d");
 var drawID;
 var cur_updateID;
 var createID;
+var cur_DespawnID;
 
 
 window.addEventListener("load", () => {
@@ -24,9 +26,16 @@ function onload() {
         cur.cur_update();
     }, 10);                                                            
 
-    createID = window.setInterval(() => {
-        cur.currencies.push(new cur.Currency());
+
+    createID = window.setInterval(()=>{
+        cur.create();
     }, 3000);
+
+    cur_DespawnID = window.setInterval(()=>{
+        cur.age_upd();
+    }, 1000);
+    
+
 
     drawID = draw();
 
