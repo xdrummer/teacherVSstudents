@@ -5,21 +5,21 @@ var papier = flipchart.getContext("2d");
 
 var currencies = [];
 var drawID;
-var updateID;
+var cur_updateID;
 var createID;
 var score = 0; 
 
 
 
 window.addEventListener("load", () => {
-    onload();
+    onload();                                                                   // muss in main.js
 });
 
 
 export class Currency {
     constructor() {
         this.bild = new Image();
-        this.bild.src = "coupon_currency.png";
+        this.bild.src = "assets/coupon_currency.png";
         this.x = Math.random() * (1000 - 200) + 200
         this.y = 200;
         this.speed = 0.5;
@@ -49,9 +49,9 @@ export class Currency {
 }
 
 export function onload() {
-    updateID = window.setInterval(() => {
-        update();
-    }, 10);
+    cur_updateID = window.setInterval(() => {
+        cur_update();
+    }, 10);                                                             // muss in main.js
 
     createID = window.setInterval(() => {
         currencies.push(new Currency());
@@ -76,7 +76,7 @@ export function onload() {
     });
 }
 
-export function update() {
+export function cur_update() {
     currencies.forEach((currency) => {
         currency.fall();
     });
@@ -89,7 +89,7 @@ export function update() {
 export function draw() {
     papier.clearRect(0, 0, flipchart.width, flipchart.height);
     Spielfeldzeichnen();
-    currencies.forEach((currency) => {
+    currencies.forEach((currency) => {                                                                  // muss in main.js
         if (currency.width && currency.height) {
             papier.drawImage(currency.bild, currency.x, currency.y, currency.width, currency.height);
         }
