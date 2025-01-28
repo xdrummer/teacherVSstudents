@@ -1,19 +1,14 @@
-import { Spielfeldzeichnen } from "./Spielfeld.js";
+export var flipchart = document.getElementById("Spielfeld");
+export var papier = flipchart.getContext("2d");
 
-var flipchart = document.getElementById("Spielfeld");
-var papier = flipchart.getContext("2d");
 
-var currencies = [];
-var drawID;
-var cur_updateID;
-var createID;
-var score = 0; 
+export var currencies = [];
+
+export var score = 0; 
 
 
 
-window.addEventListener("load", () => {
-    onload();                                                                   // muss in main.js
-});
+
 
 
 export class Currency {
@@ -48,33 +43,7 @@ export class Currency {
     };
 }
 
-export function onload() {
-    cur_updateID = window.setInterval(() => {
-        cur_update();
-    }, 10);                                                             // muss in main.js
 
-    createID = window.setInterval(() => {
-        currencies.push(new Currency());
-    }, 3000);
-
-    drawID = draw();
-
-    flipchart.addEventListener("click", (e) => {
-        const rect = flipchart.getBoundingClientRect();
-        const mouseX = e.clientX - rect.left;
-        const mouseY = e.clientY - rect.top;
-
-
-        for (let i = currencies.length - 1; i >= 0; i--) {
-            if (currencies[i].contains(mouseX, mouseY)) {
-                score += 50;
-                console.log(`Score: ${score}`); 
-                currencies.splice(i, 1);
-                break;
-            }
-        }
-    });
-}
 
 export function cur_update() {
     currencies.forEach((currency) => {
@@ -86,16 +55,3 @@ export function cur_update() {
 
 }
 
-export function draw() {
-    papier.clearRect(0, 0, flipchart.width, flipchart.height);
-    Spielfeldzeichnen();
-    currencies.forEach((currency) => {                                                                  // muss in main.js
-        if (currency.width && currency.height) {
-            papier.drawImage(currency.bild, currency.x, currency.y, currency.width, currency.height);
-        }
-    });
-
-
-    
-    drawID = window.requestAnimationFrame(draw);
-}

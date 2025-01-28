@@ -1,5 +1,5 @@
-var flipchart = document.getElementById("Spielfeld");
-var papier = flipchart.getContext("2d");
+export var flipchart = document.getElementById("Spielfeld");
+export var papier = flipchart.getContext("2d");
 
 
 export function Spielfeldzeichnen(){
