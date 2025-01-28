@@ -41,6 +41,14 @@ export class Currency {
             mouseY <= this.y + this.height
         );
     };
+
+
+
+}
+
+
+export function setScore(ctx){
+    score = score + ctx;
 }
 
 

@@ -38,8 +38,8 @@ export function onload() {
 
         for (let i = cur.currencies.length - 1; i >= 0; i--) {
             if (cur.currencies[i].contains(mouseX, mouseY)) {
-                score += 50;
-                console.log(`Score: ${score}`); 
+                cur.setScore(50);
+                console.log(`Score: ${cur.score}`); 
                 cur.currencies.splice(i, 1);
                 break;
             }
