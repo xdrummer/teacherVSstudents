@@ -10,7 +10,7 @@ class Student{
         this.attackDamage = attackDamage;// Int
         this.projectiles = []
         this.src1
-        this.lastShot // TimeStamp
+        this.lastShot = Date.now() // TimeStamp
 
     }
 
@@ -34,7 +34,7 @@ export class Projectile{
     constructor(
         src2,x,y,v,s
     ){
-        this.src2 = src// Pfad zum Schuss
+        this.src2 = src2// Pfad zum Schuss
 
         this.cork = new Image()
         this.cork.src = src2
@@ -44,7 +44,8 @@ export class Projectile{
         this.speed = v
 
         this.scale = s
-
+        this.width
+        this.height
         this.cork.onload = () => {
             this.width = this.bild.width * this.scale;
             this.height = this.bild.height * this.scale;
@@ -58,7 +59,8 @@ export class Projectile{
 
 
 export class Geniesser extends Student{
-    constructor(){
+    constructor(field, cost, buyCooldown, healthPoints, attackCooldown, attackDamage){
+        super(field, cost, buyCooldown, healthPoints, attackCooldown, attackDamage)
         this.src1 //Pfad zum Skin
         
         
@@ -69,12 +71,23 @@ export class Geniesser extends Student{
 
     shoot = function(){
         const now = Date.now();
-
-        if(now-this.lastShot > this.attackCooldown){ 
-            this.projectiles.push(new Projectile("/assets/cork.png"))
+        console.log("Shoot aufgerufen")
+        console.log(now-this.lastShot)
+        console.log(this.attackCooldown)
+        if(now-this.lastShot >= this.attackCooldown){ 
+            console.log("Shoot")
+            this.projectiles.push(new Projectile("/assets/cork.png"),50,50,0.5,0.15)
             this.lastShot = now;
         }
     }
 
 
 }
+
+
+students.push(new Geniesser(1,1,1,1,1,1))
+
+
+window.setInterval(()=>{
+    students[0].shoot()
+},5000)
