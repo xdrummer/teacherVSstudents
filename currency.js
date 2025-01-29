@@ -59,7 +59,6 @@ export function setScore(ctx){
 }
 
 export function create(){
-    console.log(currencies.length)
     if(currencies.length < 4){
         currencies.push(new Currency);
     }
