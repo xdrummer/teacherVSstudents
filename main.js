@@ -41,6 +41,10 @@ function onload() {
         teach.teachUpd();
     },10)
 
+    student_updateID =  window.setInterval(()=>{
+        student.studentUp();
+    },10)
+
     
 
 
@@ -74,11 +78,13 @@ function draw() {
     });
 
     student.students.forEach((stu) => {
-        stu.projectiles.forEach((proj) =>{
-            papier.drawImage(proj.cork, proj.x, proj.y, proj.width, proj.height)
-        })
-    }
-    )
+        stu.projectiles.forEach((proj) => {
+            if (proj.cork && proj.cork.complete) {  
+                papier.drawImage(proj.cork, proj.x, proj.y, proj.width, proj.height);
+            }
+        });
+    });
+    
 
 
     
