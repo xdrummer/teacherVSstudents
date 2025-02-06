@@ -47,8 +47,8 @@ export class Projectile{
         this.width
         this.height
         this.cork.onload = () => {
-            this.width = this.bild.width * this.scale;
-            this.height = this.bild.height * this.scale;
+            this.width = this.cork.width * this.scale;
+            this.height = this.cork.height * this.scale;
         };
     }
 
