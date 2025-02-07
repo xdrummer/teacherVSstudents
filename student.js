@@ -13,7 +13,7 @@ class Student {
         this.lastShot = Date.now(); 
     }
 
-    detectEnemy() {
+    /*detectEnemy() {
         let row = this.position.getRow(); 
 
         for (let j = 0; j < row.length; j++) { 
@@ -21,7 +21,7 @@ class Student {
                 this.shoot();
             }
         }
-    }
+    } */
 
     shoot() {
         // Wird in Unterklassen implementiert
@@ -85,12 +85,19 @@ export class Geniesser extends Student {
         }
     }
 }
-
+var checkEnemy = 0;
 export function studentUp(){
     this.students.forEach((student)=>{
         student.projectiles.forEach((proji) =>{
             proji.selfUpdatePosition();
         })
+        if(checkEnemy >= 50){ // Nicht auf jeden Pixel überprüfen
+            student.detectEnemy();
+            checkEnemy = 0
+        }else{
+            checkEnemy ++
+        }
+        
     })
 }
 
