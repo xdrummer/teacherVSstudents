@@ -1,6 +1,6 @@
 
 export var teachers = [];
-export var spawn_limit = 5;
+export var spawn_limit = 5; 
 
 
 export class Teacher{
