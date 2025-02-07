@@ -5,13 +5,17 @@ export var spawn_limit = 5;
 
 export class Teacher{
     constructor(healthPoints, speed){
-        this.positionx;
-        this.positiony;
+        this.positionx = 1000;
+        this.positiony = 200;
         this.healthPoints = healthPoints;
         this.attackCooldown;
         this.attackDamage;
-        this.walking == true;
+        this.walking = true;
         this.speed = speed;
+
+
+        this.bild = new Image();
+        this.bild.src = "assets/test_teach.jpg"    
     }
 
 
@@ -27,7 +31,7 @@ export class Teacher{
         
         if(this.walking == true){
 
-            this.positionx = this.positionx + this.speed;
+            this.positionx = this.positionx - this.speed;
 
         }
 
@@ -98,13 +102,17 @@ export function teachUpd(){
     })
 
 
+    console.log(teachers.length);
+    console.log(teachers[0].positionx);
+
+
 }
 
 
 export function teach_create(){
 
-    if(teachers.length < limit){
-
+    if(teachers.length < spawn_limit){
+        teachers.push(new Teacher(100, 1));
     }
 
 }
