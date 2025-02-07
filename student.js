@@ -2,21 +2,21 @@ export var students = [];
 
 class Student {
     constructor(field, cost, buyCooldown, healthPoints, attackCooldown, attackDamage) {
-        this.position = field; // Feld
-        this.cost = cost; // Int
-        this.buyCooldown = buyCooldown; // Int in Sekunden
-        this.healthPoints = healthPoints; // Int
-        this.attackCooldown = attackCooldown; // Int
-        this.attackDamage = attackDamage; // Int
+        this.position = field; 
+        this.cost = cost;
+        this.buyCooldown = buyCooldown; 
+        this.healthPoints = healthPoints; 
+        this.attackCooldown = attackCooldown; 
+        this.attackDamage = attackDamage; 
         this.projectiles = [];
-        this.src1 = ""; // Initialisiere als leerer String
-        this.lastShot = Date.now(); // Timestamp
+        this.src1
+        this.lastShot = Date.now(); 
     }
 
     detectEnemy() {
-        let row = this.position.getRow(); // `this.` hinzugefügt
+        let row = this.position.getRow(); 
 
-        for (let j = 0; j < row.length; j++) { // `i++` zu `j++` korrigiert
+        for (let j = 0; j < row.length; j++) { 
             if (row[j].hasEnemy) {
                 this.shoot();
             }
@@ -29,8 +29,9 @@ class Student {
 }
 
 export class Projectile {
-    constructor(src2, x, y, v, s) {
+    constructor(src2, x, y, v, s, student) {
         this.src2 = src2;
+        this.student = student
         this.x = x;
         this.y = y;
         this.speed = v;
@@ -47,14 +48,25 @@ export class Projectile {
     }
 
     selfUpdatePosition() {
-        this.x += this.speed;
+        if(this.x<=1100){
+            this.x += this.speed;
+            this.speed = this.speed * 1.002
+        }else{
+            this.delete()
+        }
+        
     }
+
+    delete = function(){
+        this.student.projectiles.splice(this.student.projectiles.indexOf(this),1)
+    } //ToDo Sich selbst aus dem Array entfernen
 }
 
 export class Geniesser extends Student {
     constructor(field, cost, buyCooldown, healthPoints, attackCooldown, attackDamage) {
         super(field, cost, buyCooldown, healthPoints, attackCooldown, attackDamage);
-        this.src1 = ""; // Pfad zum Skin initialisieren
+        this.src1 = ""; //ToDo Komplettes Design muss ergänzt werden 
+        // ToDo Animation etc. 
     }
 
     shoot() {
@@ -66,8 +78,8 @@ export class Geniesser extends Student {
         if (now - this.lastShot >= this.attackCooldown) {
             console.log("Shoot");
 
-            // **Fix**: `new Projectile` richtig aufrufen
-            this.projectiles.push(new Projectile("/assets/cork.png", 50, 50, 0.5, 0.15));
+            
+            this.projectiles.push(new Projectile("/assets/cork.png", 200, 525, 1, 0.15,this)); // ToDo Übergabe Parameter müssen abhängig von der Position des Towers sein.
 
             this.lastShot = now;
         }
@@ -83,10 +95,11 @@ export function studentUp(){
 }
 
 
-// **Student hinzufügen**
-students.push(new Geniesser(1, 1, 1, 1, 1000, 1)); // `attackCooldown` realistisch gesetzt
 
-// **Schießen alle 5 Sekunden**
-window.setInterval(() => {
+students.push(new Geniesser(1, 1, 1, 1, 1000, 1)); // ToDo: --> das muss ihm später gesagt werden, wo er hin gesetzt wird. 
+
+
+
+window.setInterval(() => { // ToDo: Passiert später nur wenn ein Enemy detected wurde
     students[0].shoot();
 }, 5000);
