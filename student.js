@@ -13,15 +13,15 @@ class Student {
         this.lastShot = Date.now(); 
     }
 
-    /*detectEnemy() {
-        let row = this.position.getRow(); 
+    detectEnemy() {
+        /*let row = this.position.getRow(); 
 
         for (let j = 0; j < row.length; j++) { 
             if (row[j].hasEnemy) {
                 this.shoot();
             }
-        }
-    } */
+        }*/
+    } 
 
     shoot() {
         // Wird in Unterklassen implementiert
