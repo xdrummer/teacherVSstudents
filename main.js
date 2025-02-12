@@ -15,6 +15,7 @@ var createID;
 var cur_DespawnID;
 var student_updateID;
 var teach_updID;
+var teach_createID;
 
 window.addEventListener("load", () => {
     onload();                                                                   // Einfaches onload im body funktioniert warum auch immer nicht
@@ -44,6 +45,10 @@ function onload() {
     student_updateID =  window.setInterval(()=>{
         student.studentUp();
     },10)
+
+    teach_createID = window.setInterval(()=>{
+        teach.teach_create();
+    }, 3000);
 
     
 
