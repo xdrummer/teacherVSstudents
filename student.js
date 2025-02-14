@@ -13,7 +13,7 @@ export class Student {
         this.lastShot = Date.now(); 
     }
 
-    detectEnemy() {
+    detectEnemy = function(){
         /*let row = this.position.getRow(); 
 
         for (let j = 0; j < row.length; j++) { 
@@ -21,6 +21,7 @@ export class Student {
                 this.shoot();
             }
         }*/
+       this.shoot()
     } 
 
     shoot() {
@@ -76,7 +77,7 @@ export class Projectile {
 export class Geniesser extends Student {
     constructor(field, cost, buyCooldown, healthPoints, attackCooldown, attackDamage) {
         super(field, cost, buyCooldown, healthPoints, attackCooldown, attackDamage);
-        this.src1 = ""; //ToDo Komplettes Design muss ergänzt werden 
+        this.src1 = "/assets/geniesser.png"; //ToDo Komplettes Design muss ergänzt werden 
         // ToDo Animation etc. 
     }
 
@@ -90,7 +91,7 @@ export class Geniesser extends Student {
             console.log("Shoot");
 
             
-            this.projectiles.push(new Projectile("/assets/cork.png", 200, 525, 1, 0.15,this)); // ToDo Übergabe Parameter müssen abhängig von der Position des Towers sein.
+            this.projectiles.push(new Projectile("/assets/cork.png", this.x, this.y+25, 1, 0.15,this)); // ToDo Übergabe Parameter müssen abhängig von der Position des Towers sein.
 
             this.lastShot = now;
         }
@@ -118,6 +119,4 @@ students.push(new Geniesser(1, 1, 1, 1, 1000, 1)); // ToDo: --> das muss ihm sp�
 
 
 
-window.setInterval(() => { // ToDo: Passiert später nur wenn ein Enemy detected wurde
-    students[0].shoot();
-}, 5000);
+
