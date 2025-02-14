@@ -91,6 +91,10 @@ function draw() {
     });
     
 
+    teach.teachers.forEach((tea) => {
+        papier.drawImage(tea.bild, tea.positionx, tea.positiony);
+    });
+
 
     
     drawID = window.requestAnimationFrame(draw);
