@@ -7,6 +7,7 @@ export class Teacher{
     constructor(healthPoints, speed){
         this.positionx = 1000;
         this.positiony = 200;
+        this.detectRange = 10;
         this.healthPoints = healthPoints;
         this.attackCooldown;
         this.attackDamage;
