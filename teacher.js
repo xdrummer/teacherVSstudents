@@ -1,16 +1,21 @@
+import * as studi from "./student.js";
+
+
 
 export var teachers = [];
 export var spawn_limit = 5; 
 
 
 export class Teacher{
-    constructor(healthPoints, speed){
+    constructor(healthPoints, speed, attackCooldown, attackDamage){
         this.positionx = 1000;
         this.positiony = 200;
         this.detectRange = 10;
+        this.student_detected = false;
+        this.field = 
         this.healthPoints = healthPoints;
-        this.attackCooldown;
-        this.attackDamage;
+        this.attackCooldown = attackCooldown;
+        this.attackDamage = attackDamage;
         this.walking = true;
         this.speed = speed;
 
@@ -21,10 +26,22 @@ export class Teacher{
 
 
     detectSchüler = function(){
-        
+        teachers.forEach((teacher) => {
+            
+        })
     }
 
     attack = function(){
+
+        if (this.student_detected == true){
+
+            if (this.attackCooldown !== 0){
+
+                studi.students[0].setHealthPoints(studi.students[0].getHealthPoints() - this.attackDamage);
+
+            }
+
+        }
 
     }
 
@@ -103,8 +120,6 @@ export function teachUpd(){
     })
 
 
-    console.log(teachers.length);
-    console.log(teachers[0].positionx);
 
 
 }

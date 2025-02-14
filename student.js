@@ -1,6 +1,6 @@
 export var students = [];
 
-class Student {
+export class Student {
     constructor(field, cost, buyCooldown, healthPoints, attackCooldown, attackDamage) {
         this.position = field; 
         this.cost = cost;
@@ -26,6 +26,17 @@ class Student {
     shoot() {
         // Wird in Unterklassen implementiert
     }
+
+    setHealthPoints = function(ctx){
+        this.healthPoints = ctx;
+    }
+
+
+    getHealthPoints = function(){
+        return this.healthPoints;
+    }
+
+
 }
 
 export class Projectile {
