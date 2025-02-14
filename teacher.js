@@ -21,7 +21,7 @@ export class Teacher{
 
 
         this.bild = new Image();
-        this.bild.src = "assets/test_teach.jpg";
+        //this.bild.src = "assets/test_teach.jpg";
     }
 
 
