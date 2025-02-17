@@ -1,10 +1,9 @@
 export var students = [];
 
 export class Student {
-    constructor(field, cost, buyCooldown, healthPoints, attackCooldown, attackDamage) {
-        this.position = field; 
-        this.x = 200//field.getx()
-        this.y = 500 //field.gety()
+    constructor(x,y, cost, buyCooldown, healthPoints, attackCooldown, attackDamage) {
+        this.x = x//field.getx()
+        this.y = y //field.gety()
         this.cost = cost;
         this.buyCooldown = buyCooldown; 
         this.healthPoints = healthPoints; 
@@ -77,8 +76,8 @@ export class Projectile {
 }
 
 export class Geniesser extends Student {
-    constructor(field, cost, buyCooldown, healthPoints, attackCooldown, attackDamage) {
-        super(field, cost, buyCooldown, healthPoints, attackCooldown, attackDamage);
+    constructor(x,y, cost, buyCooldown, healthPoints, attackCooldown, attackDamage) {
+        super(x,y, cost, buyCooldown, healthPoints, attackCooldown, attackDamage);
         this.src1 = "/assets/geniesser.png"; //ToDo Komplettes Design muss ergänzt werden 
         // ToDo Animation etc. 
         this.skin = new Image()
@@ -118,9 +117,11 @@ export function studentUp(){
     })
 }
 
+export function spawnGeniesser(x,y){
+    students.push(new Geniesser(x,y, 1, 1, 1, 1000, 1));
+}
 
 
-students.push(new Geniesser(1, 1, 1, 1, 1000, 1)); // ToDo: --> das muss ihm später gesagt werden, wo er hin gesetzt wird. 
 
 
 

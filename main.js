@@ -38,9 +38,9 @@ function onload() {
         cur.age_upd();
     }, 1000);
 
-    teach_updID = window.setInterval(()=>{
+    /*teach_updID = window.setInterval(()=>{
         teach.teachUpd();
-    },10)
+    },10)*/
 
     student_updateID =  window.setInterval(()=>{
         student.studentUp();
@@ -73,6 +73,17 @@ function onload() {
 }
 
 
+function spawnStudent(kind,row,coloumn){
+    let x = spielF.neuesfeld.getX(row,coloumn)
+    let y = spielF.neuesfeld.getY(row,coloumn)
+
+    if(kind == "Geniesser"){
+        student.spawnGeniesser(x,y)
+    }
+}
+
+
+
 function draw() {
     papier.clearRect(0, 0, flipchart.width, flipchart.height);
     spielF.Spielfeldzeichnen();
@@ -100,3 +111,5 @@ function draw() {
     
     drawID = window.requestAnimationFrame(draw);
 }
+
+spawnStudent("Geniesser",2,3-(1)) // platziert den Geniesser --- -1 als Korrektur zu Index

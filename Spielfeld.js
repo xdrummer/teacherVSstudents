@@ -1,7 +1,7 @@
 var flipchart = document.getElementById("Spielfeld");
 var papier = flipchart.getContext("2d");
 
-class Spielfeld{
+export class Spielfeld{
     constructor(){
         this.r1 = [];
         this.r2 = [];
@@ -31,8 +31,8 @@ class Spielfeld{
     }
 }
 
-var neuesfeld = new Spielfeld()
-class Feld{
+export var neuesfeld = new Spielfeld()
+export class Feld{
     constructor(x,y,w,h,s,l){
         this.x = x;
         this.y = y;
@@ -43,7 +43,7 @@ class Feld{
     }
   
 }
-function Spielfeldzeichnen(){
+export function Spielfeldzeichnen(){
 var verschub = 100;
 let eins 
 let zwei 
