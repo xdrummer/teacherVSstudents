@@ -83,6 +83,7 @@ function draw() {
     });
 
     student.students.forEach((stu) => {
+        papier.drawImage(stu.skin, stu.x, stu.y)
         stu.projectiles.forEach((proj) => {
             if (proj.cork && proj.cork.complete) {  
                 papier.drawImage(proj.cork, proj.x, proj.y, proj.width, proj.height);

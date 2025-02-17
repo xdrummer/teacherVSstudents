@@ -3,6 +3,8 @@ export var students = [];
 export class Student {
     constructor(field, cost, buyCooldown, healthPoints, attackCooldown, attackDamage) {
         this.position = field; 
+        this.x = 200//field.getx()
+        this.y = 500 //field.gety()
         this.cost = cost;
         this.buyCooldown = buyCooldown; 
         this.healthPoints = healthPoints; 
@@ -79,6 +81,9 @@ export class Geniesser extends Student {
         super(field, cost, buyCooldown, healthPoints, attackCooldown, attackDamage);
         this.src1 = "/assets/geniesser.png"; //ToDo Komplettes Design muss ergänzt werden 
         // ToDo Animation etc. 
+        this.skin = new Image()
+        this.skin.src = this.src1;
+        
     }
 
     shoot() {
@@ -91,7 +96,7 @@ export class Geniesser extends Student {
             console.log("Shoot");
 
             
-            this.projectiles.push(new Projectile("/assets/cork.png", this.x, this.y+25, 1, 0.15,this)); // ToDo Übergabe Parameter müssen abhängig von der Position des Towers sein.
+            this.projectiles.push(new Projectile("/assets/cork.png", this.x+50, this.y+10, 1, 0.15,this)); // ToDo Übergabe Parameter müssen abhängig von der Position des Towers sein.
 
             this.lastShot = now;
         }
