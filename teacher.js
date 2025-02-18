@@ -127,23 +127,39 @@ export class Teacher{
 }
 
 
+export function teach_despawn(){
+    teachers.forEach((teacher) => {
+        if (teacher.positionx <= spiel.neuesfeld.getX(1,0) - teacher.width){
+            teachers.splice(teachers.indexOf(teacher), 1)
+        }
+    })
+}
+
+export function teach_die(){
+    teachers.forEach((teacher) => {
+        if (teacher.getHealthPoints <= 0){
+            return;                                                         // hier soll dann textur geändert werden und es muss gespliced werden
+        }
+    })
+}
+
 
 export function teachUpd(){
 
     teachers.forEach((teacher) => {
         teacher.walk();
-        console.log(teacher.positionx);
 
         /*if(teacher.getAttackCooldown() !== teacher.getCache()){
             teacher.setAttackCooldown(teacher.getAttackCooldown() - 1);
         }*/
-    })
+
 
     /*teachers[0].attack();*/
 
+    });
 
+    teach_despawn();
 }
-
 
 export function teach_create(){
 
