@@ -157,7 +157,7 @@ export function teachUpd(){
     /*teachers[0].attack();*/
 
     });
-
+    teach_die();
     teach_despawn();
 }
 
