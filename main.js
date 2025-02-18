@@ -38,9 +38,9 @@ function onload() {
         cur.age_upd();
     }, 1000);
 
-    /*teach_updID = window.setInterval(()=>{
+    teach_updID = window.setInterval(()=>{
         teach.teachUpd();
-    },10)*/
+    },10)
 
     student_updateID =  window.setInterval(()=>{
         student.studentUp();
@@ -104,7 +104,7 @@ function draw() {
     
 
     teach.teachers.forEach((tea) => {
-        papier.drawImage(tea.bild, tea.positionx, tea.positiony);
+        papier.drawImage(tea.bild, tea.positionx, tea.positiony, tea.width, tea.height);
     });
 
 

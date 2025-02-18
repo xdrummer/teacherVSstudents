@@ -1,4 +1,5 @@
 import * as studi from "./student.js";
+import * as spiel from "./Spielfeld.js";
 
 
 
@@ -7,8 +8,11 @@ export var spawn_limit = 5;
 
 export class Teacher{
     constructor(healthPoints, speed, attackCooldown, attackDamage){
+        
+
+
         this.positionx = 1000;
-        this.positiony = 200;
+        this.positiony = spiel.neuesfeld.getY(Math.floor(Math.random() * (5 - 1) + 1), 8)
         this.detectRange = 10;
         this.student_detected = false;
         this.field = 
@@ -18,14 +22,20 @@ export class Teacher{
         this.walking = true;
         this.speed = speed;
         this.cache = attackCooldown;
-
+    
+        this.scale = 0.1;
 
         this.bild = new Image();
-        //this.bild.src = "assets/test_teach.jpg";
+        this.bild.src = "assets/teacher-jarre.png";
+
+        this.bild.onload = () => {
+            this.width = this.bild.width * this.scale;
+            this.height = this.bild.height * this.scale;
+        }
     }
 
 
-    detectSchüler = function(){
+    /*detectSchüler = function(){
         teachers.forEach((teacher) => {
             
         })
@@ -45,7 +55,7 @@ export class Teacher{
 
         }
 
-    }
+    }*/
 
     walk = function(){
         
@@ -122,13 +132,14 @@ export function teachUpd(){
 
     teachers.forEach((teacher) => {
         teacher.walk();
+        console.log(teacher.positionx);
 
-        if(teacher.getAttackCooldown() !== teacher.getCache()){
+        /*if(teacher.getAttackCooldown() !== teacher.getCache()){
             teacher.setAttackCooldown(teacher.getAttackCooldown() - 1);
-        }
+        }*/
     })
 
-    teachers[0].attack();
+    /*teachers[0].attack();*/
 
 
 }
@@ -139,5 +150,7 @@ export function teach_create(){
     if(teachers.length < spawn_limit){
         teachers.push(new Teacher(100, 1, 150, 50));
     }
+
+    spiel.neuesfeld.getY(3,5);
 
 }

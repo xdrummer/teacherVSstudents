@@ -12,7 +12,6 @@ export var despawn_timer = 15;
 
 
 
-
 export class Currency {
     constructor() {
         this.bild = new Image();

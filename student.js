@@ -87,9 +87,9 @@ export class Geniesser extends Student {
 
     shoot() {
         const now = Date.now();
-        console.log("Shoot aufgerufen");
+        /*console.log("Shoot aufgerufen");
         console.log(now - this.lastShot);
-        console.log(this.attackCooldown);
+        console.log(this.attackCooldown);*/
 
         if (now - this.lastShot >= this.attackCooldown) {
             console.log("Shoot");
