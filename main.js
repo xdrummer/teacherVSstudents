@@ -114,12 +114,31 @@ function spawnStudent(kind,row,coloumn){
     let y = spielF.neuesfeld.getY(row,coloumn)
 
     if(kind == "Geniesser"){
-        student.spawnGeniesser(x,y-1)
-        // TODO Hier Währung abziehen
+        if(cur.getScore()>=student.kosten.get("Geniesser")){
+            student.spawnGeniesser(x,y-1)
+            cur.setScore(-student.kosten.get("Geniesser"))
+        }else{
+            currencyAnimation(15)
+        }
+        
     }
 }
 
-
+async function currencyAnimation(ctx){
+    let red = '#f00'
+    let black = '#000'
+    for(let i=0; i<ctx;i++){
+        if(i%2==0){
+            document.getElementById('cur_board').style.color = red
+        }else{
+            document.getElementById('cur_board').style.color = black
+        }
+        await new Promise(resolve => setTimeout(resolve, 100));
+    }
+    document.getElementById('cur_board').style.color = black
+    
+    
+}
 
 function draw() {
     papier.clearRect(0, 0, flipchart.width, flipchart.height);

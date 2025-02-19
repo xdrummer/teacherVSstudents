@@ -1,10 +1,13 @@
+
+export var kosten = new Map()
+kosten.set("Geniesser", 150)
 export var students = [];
 
 export class Student {
-    constructor(x,y, cost, buyCooldown, healthPoints, attackCooldown, attackDamage) {
+    constructor(x,y, buyCooldown, healthPoints, attackCooldown, attackDamage) {
         this.x = x//field.getx()
         this.y = y //field.gety()
-        this.cost = cost;
+        
         this.buyCooldown = buyCooldown; 
         this.healthPoints = healthPoints; 
         this.attackCooldown = attackCooldown; 
@@ -37,6 +40,8 @@ export class Student {
     getHealthPoints = function(){
         return this.healthPoints;
     }
+
+    
 
 
 }
@@ -77,8 +82,8 @@ export class Projectile {
 }
 
 export class Geniesser extends Student {
-    constructor(x,y, cost, buyCooldown, healthPoints, attackCooldown, attackDamage) {
-        super(x,y, cost, buyCooldown, healthPoints, attackCooldown, attackDamage);
+    constructor(x,y,  buyCooldown, healthPoints, attackCooldown, attackDamage) {
+        super(x,y, buyCooldown, healthPoints, attackCooldown, attackDamage);
         this.src1 = "/assets/geniesser.png"; //ToDo Komplettes Design muss ergänzt werden 
         // ToDo Animation etc. 
         this.skin = new Image()
@@ -119,7 +124,7 @@ export function studentUp(){
 }
 
 export function spawnGeniesser(x,y){
-    students.push(new Geniesser(x,y, 1, 1, 1, 1000, 1));
+    students.push(new Geniesser(x,y, 1, 1, 1000, 1));
 }
 
 

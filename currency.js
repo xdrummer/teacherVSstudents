@@ -57,6 +57,10 @@ export function setScore(ctx){
     score = score + ctx;
 }
 
+export function getScore(ctx){
+    return score
+}
+
 export function create(){
     if(currencies.length < 4){
         currencies.push(new Currency);
