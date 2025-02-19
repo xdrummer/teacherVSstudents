@@ -48,12 +48,19 @@ export class Auswahl{
     
    
     contains = function (mouseX, mouseY) {
-        return (
-            mouseX >= this.x &&
-            mouseX <= this.x + this.width &&
-            mouseY >= this.y &&
-            mouseY <= this.y + this.height
-        );
+        
+
+        this.schueler.forEach(sch => {
+            if(
+                mouseX >= sch[2] &&
+                mouseX <= sch[2] + sch[4] &&
+                mouseY >= sch[3] &&
+                mouseY <= sch[3] + sch[5]
+            ){
+
+            }
+        })
+
     };
 
     getSrc = function(id){
