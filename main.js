@@ -84,6 +84,7 @@ function onload() {
                 console.log("SelectedStudent:", 
                 selectedStudent
                 )
+                
             }
             
 
@@ -107,6 +108,7 @@ function onload() {
                         spawnStudent(selectedStudent,i,j)
                         spielF.auswahl.unselect(selectedStudent)
                         selectedStudent = null
+                        spielF.neuesfeld.getfelder(i)[j-1].s = true
                     }
                 }
             }
