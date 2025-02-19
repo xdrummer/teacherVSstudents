@@ -79,6 +79,7 @@ function spawnStudent(kind,row,coloumn){
 
     if(kind == "Geniesser"){
         student.spawnGeniesser(x,y)
+        // TODO Hier Währung abziehen
     }
 }
 
@@ -112,4 +113,4 @@ function draw() {
     drawID = window.requestAnimationFrame(draw);
 }
 
-spawnStudent("Geniesser",2,3-(1)) // platziert den Geniesser --- -1 als Korrektur zu Index
+spawnStudent("Geniesser",1,1-(1)) // platziert den Geniesser --- -1 als Korrektur zu Index

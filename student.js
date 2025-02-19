@@ -64,6 +64,7 @@ export class Projectile {
         if(this.x<=1100){
             this.x += this.speed;
             this.speed = this.speed * 1.002
+            this.y = this.y - 0.05
         }else{
             this.delete()
         }
@@ -95,7 +96,7 @@ export class Geniesser extends Student {
             console.log("Shoot");
 
             
-            this.projectiles.push(new Projectile("/assets/cork.png", this.x+50, this.y+10, 1, 0.15,this)); // ToDo Übergabe Parameter müssen abhängig von der Position des Towers sein.
+            this.projectiles.push(new Projectile("/assets/cork.png", this.x+50, this.y+45, 1, 0.15,this)); // ToDo Übergabe Parameter müssen abhängig von der Position des Towers sein.
 
             this.lastShot = now;
         }
