@@ -73,13 +73,21 @@ function onload() {
         if(spielF.auswahl.contains(mouseX,mouseY,"b")){
             id = spielF.auswahl.contains(mouseX,mouseY,"i")
             
-
-            selectedStudent = id
             
-            spielF.auswahl.select(selectedStudent)
-            console.log("SelectedStudent:", 
+            if(selectedStudent){
+                spielF.auswahl.unselect(selectedStudent)
+                selectedStudent = null
+            }else{
+                selectedStudent = id
+            
+                spielF.auswahl.select(selectedStudent)
+                console.log("SelectedStudent:", 
                 selectedStudent
-            )
+                )
+            }
+            
+
+            
         }
         if(selectedStudent){
             
