@@ -6,7 +6,7 @@ import * as student from "./student.js";
 
 var flipchart = document.getElementById("Spielfeld");
 var papier = flipchart.getContext("2d");
-
+var selectedStudent
 
 
 var drawID;
@@ -59,6 +59,7 @@ function onload() {
         const rect = flipchart.getBoundingClientRect();
         const mouseX = e.clientX - rect.left;
         const mouseY = e.clientY - rect.top;
+        var id
 
 
         for (let i = cur.currencies.length - 1; i >= 0; i--) {
@@ -67,6 +68,39 @@ function onload() {
                 console.log(`Score: ${cur.score}`); 
                 cur.currencies.splice(i, 1);
                 break;
+            }
+        }
+        if(spielF.auswahl.contains(mouseX,mouseY,"b")){
+            id = spielF.auswahl.contains(mouseX,mouseY,"i")
+            
+
+            selectedStudent = id
+            
+            spielF.auswahl.select(selectedStudent)
+            console.log("SelectedStudent:", 
+                selectedStudent
+            )
+        }
+        if(selectedStudent){
+            
+            for(let i = 1;i<=5;i++){
+                
+                
+                for(let j = 1;j<=9;j++){
+                    
+                    
+                    if(
+                    
+                        mouseX >= spielF.neuesfeld.getX(i,j) &&
+                        mouseX <= spielF.neuesfeld.getX(i,j) + 100 &&
+                        mouseY >= spielF.neuesfeld.getY(i,j) &&
+                        mouseY <= spielF.neuesfeld.getY(i,j) + 100
+                    ){
+                        spawnStudent(selectedStudent,i,j)
+                        spielF.auswahl.unselect(selectedStudent)
+                        selectedStudent = null
+                    }
+                }
             }
         }
 
@@ -80,7 +114,7 @@ function spawnStudent(kind,row,coloumn){
     let y = spielF.neuesfeld.getY(row,coloumn)
 
     if(kind == "Geniesser"){
-        student.spawnGeniesser(x,y)
+        student.spawnGeniesser(x,y-1)
         // TODO Hier Währung abziehen
     }
 }
@@ -113,16 +147,9 @@ function draw() {
     
     
     
-    papier.drawImage(spielF.auswahl.schueler[0][6],spielF.auswahl.getX(1),spielF.auswahl.getY(1),spielF.auswahl.getW(1),spielF.auswahl.getH(1))    
+    papier.drawImage(spielF.auswahl.schueler[0][6],spielF.auswahl.getX("Geniesser"),spielF.auswahl.getY("Geniesser"),spielF.auswahl.getW("Geniesser"),spielF.auswahl.getH("Geniesser"))    
 
-    console.log(
-        "X:", spielF.auswahl.getX(1),
-        "Y:", spielF.auswahl.getY(1),
-        "W:", spielF.auswahl.getW(1),
-        "H:", spielF.auswahl.getH(1)
-    );
     
     drawID = window.requestAnimationFrame(draw);
 }
 
-spawnStudent("Geniesser",1,1-(1)) // platziert den Geniesser --- -1 als Korrektur zu Index

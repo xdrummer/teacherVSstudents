@@ -38,7 +38,7 @@ export class Spielfeld{
 
 export class Auswahl{
     constructor(){
-        this.schueler = [[1,"/assets/geniesser.png", 300,30,100,100,new Image()]]
+        this.schueler = [["Geniesser","/assets/geniesser.png", 300,30,100,100,new Image(),"/assets/geniesserSelected.png"]]
 
 
         this.schueler.forEach(sch =>{
@@ -46,10 +46,23 @@ export class Auswahl{
         })
     }
     
-   
-    contains = function (mouseX, mouseY) {
-        
-
+    select = function(id){
+        let schueler = this.schueler.find(sch => sch[0] === id);
+        if(schueler){
+            schueler[6].src = schueler[7]
+        }
+    }
+    unselect = function(id){
+        console.log("UnSelect")
+        console.log(id)
+        let schueler = this.schueler.find(sch => sch[0] === id);
+        console.log(schueler)
+        if(schueler){
+            schueler[6].src = schueler[1]
+        }
+    }
+    contains = function (mouseX, mouseY,ctx) {
+        let returnValue 
         this.schueler.forEach(sch => {
             if(
                 mouseX >= sch[2] &&
@@ -57,9 +70,18 @@ export class Auswahl{
                 mouseY >= sch[3] &&
                 mouseY <= sch[3] + sch[5]
             ){
+            
+                if(ctx=="b"){
+                    returnValue =  true
+                }
+                if(ctx=="i"){
+                    returnValue = sch[0]
+                }
 
+                
             }
         })
+        return returnValue
 
     };
 
