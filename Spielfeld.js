@@ -31,6 +31,63 @@ export class Spielfeld{
     }
 }
 
+
+
+
+
+
+export class Auswahl{
+    constructor(){
+        this.schueler = [[1,"/assets/geniesser.png", 300,30,100,100,new Image()]]
+
+
+        this.schueler.forEach(sch =>{
+            sch[6].src = sch[1]
+        })
+    }
+    
+   
+    contains = function (mouseX, mouseY) {
+        return (
+            mouseX >= this.x &&
+            mouseX <= this.x + this.width &&
+            mouseY >= this.y &&
+            mouseY <= this.y + this.height
+        );
+    };
+
+    getSrc = function(id){
+        let schueler = this.schueler.find(sch => sch[0] === id);
+        return schueler ? schueler[1] : undefined;
+    }
+    getX = function(id){
+        let schueler = this.schueler.find(sch => sch[0] === id);
+        return schueler ? schueler[2] : undefined;
+    };
+    
+    getY = function(id){
+        let schueler = this.schueler.find(sch => sch[0] === id);
+        return schueler ? schueler[3] : undefined;
+    }
+    getW = function(id){
+        let schueler = this.schueler.find(sch => sch[0] === id);
+        return schueler ? schueler[4] : undefined;
+    }
+    getH = function(id){
+        let schueler = this.schueler.find(sch => sch[0] === id);
+        return schueler ? schueler[5] : undefined;
+    }
+    getImg = function(id){
+        let schueler = this.schueler.find(sch => sch[0] === id);
+        return schueler ? schueler[6] : undefined;
+    }
+
+
+
+    
+}
+
+export var auswahl = new Auswahl()
 export var neuesfeld = new Spielfeld()
 export class Feld{
     constructor(x,y,w,h,s,l){

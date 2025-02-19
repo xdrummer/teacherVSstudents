@@ -69,6 +69,8 @@ function onload() {
                 break;
             }
         }
+
+        
     });
 }
 
@@ -108,7 +110,17 @@ function draw() {
         papier.drawImage(tea.bild, tea.positionx, tea.positiony, tea.width, tea.height);
     });
 
+    
+    
+    
+    papier.drawImage(spielF.auswahl.schueler[0][6],spielF.auswahl.getX(1),spielF.auswahl.getY(1),spielF.auswahl.getW(1),spielF.auswahl.getH(1))    
 
+    console.log(
+        "X:", spielF.auswahl.getX(1),
+        "Y:", spielF.auswahl.getY(1),
+        "W:", spielF.auswahl.getW(1),
+        "H:", spielF.auswahl.getH(1)
+    );
     
     drawID = window.requestAnimationFrame(draw);
 }
