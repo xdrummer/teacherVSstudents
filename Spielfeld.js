@@ -11,8 +11,17 @@ export class Spielfeld{
     }
     getX(f, s) {
         let feld = this.getfelder(f);
-        return feld[s].x
+        
+       
+    
+        if (!feld || !feld[s]) {
+            console.log("Error")
+            return undefined;
+        }
+    
+        return feld[s].x;
     }
+    
 
     getY(f, s) {
         let feld = this.getfelder(f);
@@ -26,9 +35,12 @@ export class Spielfeld{
             case 3: return this.r3;
             case 4: return this.r4;
             case 5: return this.r5;
-            break;
+            default:
+                console.error(`Fehler: Ungültiger Feld-Index f=${f}`);
+                return [];
         }
     }
+    
 }
 
 
@@ -56,7 +68,6 @@ export class Auswahl{
         console.log("UnSelect")
         console.log(id)
         let schueler = this.schueler.find(sch => sch[0] === id);
-        console.log(schueler)
         if(schueler){
             schueler[6].src = schueler[1]
         }
@@ -126,6 +137,9 @@ export class Feld{
         this.h = h;
         this.s = false;
         this.l = false
+    }
+    getX = function(){
+        return this.x
     }
   
 }

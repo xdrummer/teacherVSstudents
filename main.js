@@ -25,6 +25,7 @@ window.addEventListener("load", () => {
 
 
 function onload() {
+    spielF.Spielfeldzeichnen()
     cur_updateID = window.setInterval(() => {
         cur.cur_update();
     }, 10);                                                            
@@ -95,7 +96,7 @@ function onload() {
             for(let i = 1;i<=5;i++){
                 
                 
-                for(let j = 1;j<=9;j++){
+                for(let j = 0;j<9;j++){
                     
                     
                     if(
@@ -108,7 +109,7 @@ function onload() {
                         spawnStudent(selectedStudent,i,j)
                         spielF.auswahl.unselect(selectedStudent)
                         selectedStudent = null
-                        spielF.neuesfeld.getfelder(i)[j-1].s = true
+                        spielF.neuesfeld.getfelder(i)[j].s = true
                     }
                 }
             }
