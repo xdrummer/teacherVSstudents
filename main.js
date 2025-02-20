@@ -66,7 +66,7 @@ function onload() {
         for (let i = cur.currencies.length - 1; i >= 0; i--) {
             if (cur.currencies[i].contains(mouseX, mouseY)) {
                 cur.setScore(50);
-                console.log(`Score: ${cur.score}`); 
+                
                 cur.currencies.splice(i, 1);
                 break;
             }
@@ -82,9 +82,7 @@ function onload() {
                 selectedStudent = id
             
                 spielF.auswahl.select(selectedStudent)
-                console.log("SelectedStudent:", 
-                selectedStudent
-                )
+                
                 
             }
             
@@ -109,7 +107,7 @@ function onload() {
                         spawnStudent(selectedStudent,i,j)
                         spielF.auswahl.unselect(selectedStudent)
                         selectedStudent = null
-                        spielF.neuesfeld.getfelder(i)[j].s = true
+                        
                     }
                 }
             }
@@ -127,7 +125,9 @@ function spawnStudent(kind,row,coloumn){
     if(kind == "Geniesser"){
         if(cur.getScore()>=student.kosten.get("Geniesser")){
             student.spawnGeniesser(x,y-1)
+            
             cur.setScore(-student.kosten.get("Geniesser"))
+            spielF.neuesfeld.getfelder(row)[coloumn].s = true
         }else{
             currencyAnimation(15)
         }

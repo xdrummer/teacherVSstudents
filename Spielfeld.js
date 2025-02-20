@@ -65,8 +65,7 @@ export class Auswahl{
         }
     }
     unselect = function(id){
-        console.log("UnSelect")
-        console.log(id)
+        
         let schueler = this.schueler.find(sch => sch[0] === id);
         if(schueler){
             schueler[6].src = schueler[1]

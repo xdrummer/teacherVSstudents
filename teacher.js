@@ -13,8 +13,7 @@ export class Teacher{
 
         this.positionx = 1000;
         this.positiony = spiel.neuesfeld.getY(Math.floor(Math.random() * (5 - 1) + 1), 8)
-        this.row = spiel.neuesfeld.getfelder((this.positiony-200)/100 + 1)
-        console.log(this.row)
+        //
         this.detectRange = 10;
         this.student_detected = false;
         this.field = 
@@ -22,9 +21,10 @@ export class Teacher{
         this.attackCooldown = attackCooldown;
         this.attackDamage = attackDamage;
         this.walking = true;
+        this.lastWalk = false;
         this.speed = speed;
         this.cache = attackCooldown;
-    
+        
         this.scale = 0.1;
 
         this.bild = new Image();
@@ -60,12 +60,32 @@ export class Teacher{
     }*/
 
     walk = function(){
-        
-        if(this.walking == true){
-
+        let fieldNumberNext = Math.floor(this.positionx / 100)-2
+        let fields = spiel.neuesfeld.getfelder((this.positiony-200)/100 + 1)
+        console.log(fieldNumberNext)
+        if(fieldNumberNext<=0){
+            fieldNumberNext = 0
+        }
+        if(spiel.neuesfeld.getfelder((this.positiony-200)/100 + 1)[fieldNumberNext].s == false ){
+            this.walking = true
+            this.lastWalk = false
+        }else{
+            this.walking = false
+        }
+        if(this.walking == true || this.lastWalk == true){
             this.positionx = this.positionx - this.speed;
+            
 
         }
+        if(this.walking == false){
+            if((Math.floor(this.positionx / 100)-2)*100+220<this.positionx){
+                this.lastWalk = true
+            }else{
+                this.lastWalk = false
+            }
+            
+        }
+        
 
     }
 
