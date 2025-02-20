@@ -2,12 +2,14 @@
 export var kosten = new Map()
 kosten.set("Geniesser", 150)
 export var students = [];
+import * as spielF from "./Spielfeld.js";
 
 export class Student {
     constructor(x,y, buyCooldown, healthPoints, attackCooldown, attackDamage) {
-        this.x = x//field.getx()
-        this.y = y //field.gety()
-        
+        this.x = x
+        this.y = y
+        this.row = Math.round((this.y-200)/100 + 1)
+        this.fieldNumber = Math.floor(this.x / 100)-2
         this.buyCooldown = buyCooldown; 
         this.healthPoints = healthPoints; 
         this.attackCooldown = attackCooldown; 
@@ -15,6 +17,8 @@ export class Student {
         this.projectiles = [];
         this.src1
         this.lastShot = Date.now(); 
+        
+        
     }
 
     detectEnemy = function(){
@@ -39,6 +43,13 @@ export class Student {
 
     getHealthPoints = function(){
         return this.healthPoints;
+    }
+
+    despawn = function(){
+        let rowArray = spielF.neuesfeld.getfelder(this.row)
+        students.splice(students.indexOf(this),1)
+        
+        rowArray[this.fieldNumber].s = false;
     }
 
     
@@ -119,12 +130,14 @@ export function studentUp(){
         }else{
             checkEnemy ++
         }
-        
+        if(student.getHealthPoints()<=0){
+            student.despawn()
+        }
     })
 }
 
 export function spawnGeniesser(x,y){
-    students.push(new Geniesser(x,y, 1, 1, 1000, 1));
+    students.push(new Geniesser(x,y, 1, 250, 1000, 1));
 }
 
 

@@ -41,34 +41,44 @@ export class Teacher{
         teachers.forEach((teacher) => {
             
         })
-    }
+    }*/
 
+
+
+    checkStudentStatus = function(){
+        return this.student_detected;
+    }    
     attack = function(){
 
+        const now = Date.now();
+        const nextField = Math.floor(this.positionx / 100)-2
+        const row = (this.positiony-200)/100 + 1
+        
+        
+        const indexOf = studi.students.indexOf(studi.students.find(sch=>sch.row==row && sch.fieldNumber == nextField))
         if (this.student_detected == true){
-
-            if (this.attackCooldown == 0){
-
-                studi.students[0].setHealthPoints(studi.students[0].getHealthPoints() - this.attackDamage);
-
-                this.attackCooldown = cache;
-
+            
+            if (now - this.cache >= this.attackCooldown) {
+                studi.students[indexOf].setHealthPoints(studi.students[indexOf].getHealthPoints() - this.attackDamage)
+    
+                this.cache = now;
             }
 
         }
 
-    }*/
+    }
 
     walk = function(){
         let fieldNumberNext = Math.floor(this.positionx / 100)-2
-        let fields = spiel.neuesfeld.getfelder((this.positiony-200)/100 + 1)
-        console.log(fieldNumberNext)
+        
+        
         if(fieldNumberNext<=0){
             fieldNumberNext = 0
         }
         if(spiel.neuesfeld.getfelder((this.positiony-200)/100 + 1)[fieldNumberNext].s == false ){
             this.walking = true
             this.lastWalk = false
+            this.student_detected = false
         }else{
             this.walking = false
         }
@@ -81,6 +91,7 @@ export class Teacher{
             if((Math.floor(this.positionx / 100)-2)*100+220<this.positionx){
                 this.lastWalk = true
             }else{
+                this.student_detected = true
                 this.lastWalk = false
             }
             
@@ -170,6 +181,10 @@ export function teachUpd(){
 
     teachers.forEach((teacher) => {
         teacher.walk();
+        if(teacher.checkStudentStatus()){
+            teacher.attack();
+        }
+        
 
         /*if(teacher.getAttackCooldown() !== teacher.getCache()){
             teacher.setAttackCooldown(teacher.getAttackCooldown() - 1);
@@ -186,7 +201,7 @@ export function teachUpd(){
 export function teach_create(){
 
     if(teachers.length < spawn_limit){
-        teachers.push(new Teacher(100, 1, 150, 50));
+        teachers.push(new Teacher(100, 1, 1500, 50));
     }
 
     spiel.neuesfeld.getY(3,5);
