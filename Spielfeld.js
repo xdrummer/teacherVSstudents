@@ -146,23 +146,25 @@ for(let i=1; i < 6; i= i+1){
         if(j % 2 == 0){
             papier.fillStyle = eins
             papier.fillRect((j* 100+verschub), (i*100 + verschub),100,100)
-            
-            switch(i){
-                case 1 : neuesfeld.r1.push(new Feld(j*100 + verschub, i*100 + verschub, 100, 100))
-                break;
-
-                case 2 : neuesfeld.r2.push(new Feld(j*100 + verschub, i*100 + verschub, 100, 100))
-                break;
-
-                case 3 : neuesfeld.r3.push(new Feld(j*100 + verschub, i*100 + verschub, 100, 100))
-                break;
-
-                case 4 : neuesfeld.r4.push(new Feld(j*100 + verschub, i*100 + verschub, 100, 100))
-                break;
-
-                case 5 : neuesfeld.r5.push(new Feld(j*100 + verschub, i*100 + verschub, 100, 100))
-                break;
+            if(neuesfeld.r5.length<9){
+                switch(i){
+                    case 1 : neuesfeld.r1.push(new Feld(j*100 + verschub, i*100 + verschub, 100, 100))
+                    break;
+    
+                    case 2 : neuesfeld.r2.push(new Feld(j*100 + verschub, i*100 + verschub, 100, 100))
+                    break;
+    
+                    case 3 : neuesfeld.r3.push(new Feld(j*100 + verschub, i*100 + verschub, 100, 100))
+                    break;
+    
+                    case 4 : neuesfeld.r4.push(new Feld(j*100 + verschub, i*100 + verschub, 100, 100))
+                    break;
+    
+                    case 5 : neuesfeld.r5.push(new Feld(j*100 + verschub, i*100 + verschub, 100, 100))
+                    break;
+                }
             }
+            
             //new Feld(j*100 + verschub, i*100 + verschub, 100, 100)}
         
         }
@@ -170,23 +172,26 @@ for(let i=1; i < 6; i= i+1){
         else if(j % 2 != 0){
             papier.fillStyle = zwei
             papier.fillRect((j* 100+verschub), (i*100 + verschub),100,100)
-            switch(i){
-                case 1 : neuesfeld.r1.push(new Feld(j*100 + verschub, i*100 + verschub, 100, 100))
-                
-                break;
-
-                case 2 : neuesfeld.r2.push(new Feld(j*100 + verschub, i*100 + verschub, 100, 100))
-                break;
-
-                case 3 : neuesfeld.r3.push(new Feld(j*100 + verschub, i*100 + verschub, 100, 100))
-                break;
-
-                case 4 : neuesfeld.r4.push(new Feld(j*100 + verschub, i*100 + verschub, 100, 100))
-                break;
-
-                case 5 : neuesfeld.r5.push(new Feld(j*100 + verschub, i*100 + verschub, 100, 100))
-                break;
+            if(neuesfeld.r5.length<9){
+                switch(i){
+                    case 1 : neuesfeld.r1.push(new Feld(j*100 + verschub, i*100 + verschub, 100, 100))
+                    
+                    break;
+    
+                    case 2 : neuesfeld.r2.push(new Feld(j*100 + verschub, i*100 + verschub, 100, 100))
+                    break;
+    
+                    case 3 : neuesfeld.r3.push(new Feld(j*100 + verschub, i*100 + verschub, 100, 100))
+                    break;
+    
+                    case 4 : neuesfeld.r4.push(new Feld(j*100 + verschub, i*100 + verschub, 100, 100))
+                    break;
+    
+                    case 5 : neuesfeld.r5.push(new Feld(j*100 + verschub, i*100 + verschub, 100, 100))
+                    break;
+                }
             }
+            
         }
         
     
@@ -198,6 +203,7 @@ for(let i=1; i < 6; i= i+1){
     papier.strokeRect(1000,1,100,50)
     papier.font = "bold 35px Arial";  // Hier können Sie die Schriftart und -größe definieren
     papier.fillText("Menü", 1004, 37)
+    
 
 }
 }
@@ -213,4 +219,4 @@ for(let i=1; i < 6; i= i+1){
 */
 
 }
-Spielfeldzeichnen(); 
+

@@ -13,6 +13,8 @@ export class Teacher{
 
         this.positionx = 1000;
         this.positiony = spiel.neuesfeld.getY(Math.floor(Math.random() * (5 - 1) + 1), 8)
+        this.row = spiel.neuesfeld.getfelder((this.positiony-200)/100 + 1)
+        console.log(this.row)
         this.detectRange = 10;
         this.student_detected = false;
         this.field = 

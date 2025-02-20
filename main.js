@@ -152,7 +152,8 @@ async function currencyAnimation(ctx){
 
 function draw() {
     papier.clearRect(0, 0, flipchart.width, flipchart.height);
-    spielF.Spielfeldzeichnen();
+    spielF.Spielfeldzeichnen()
+    
     cur.currencies.forEach((currency) => {                                                                  
 
         papier.drawImage(currency.bild, currency.x, currency.y, currency.width, currency.height);
