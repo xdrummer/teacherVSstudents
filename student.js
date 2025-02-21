@@ -58,7 +58,7 @@ export class Student {
     }
 
     getAttackDamage = function(){
-        return this.attackCooldown;
+        return this.attackDamage;
     }
 }
 
@@ -113,7 +113,8 @@ export class Projectile {
         teach.teachers.forEach((teacher) => {
             if((this.x >= teacher.getPositionx() && this.x <= teacher.getPositionx() + teacher.getWidth()) && (this.y >= teacher.getPositiony() && this.y <= teacher.getPositiony() + teacher.getHeight())){
                 teacher.hit(this.getParent().getAttackDamage());
-                console.log("hitttiii")
+                this.delete();
+
             }
         });
     }
@@ -167,7 +168,7 @@ export function studentUp(){
 }
 
 export function spawnGeniesser(x,y){
-    students.push(new Geniesser(x,y, 1, 250, 1000, 1));
+    students.push(new Geniesser(x,y, 1, 250, 2000, 20));
 }
 
 

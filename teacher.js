@@ -4,7 +4,8 @@ import * as spiel from "./Spielfeld.js";
 
 
 export var teachers = [];
-export var spawn_limit = 5; 
+
+export var spawn_limit = 2; 
 
 export class Teacher{
     constructor(healthPoints, speed, attackCooldown, attackDamage){
@@ -101,7 +102,22 @@ export class Teacher{
 
     hit = function(damage){
         console.log("hit");
+        console.log(this.healthPoints);
+
+        this.healthPoints = this.healthPoints - damage;
+        console.log(this.healthPoints);
+
+        if(this.healthPoints <= 0){
+            this.die();
+        }
+
     }
+
+
+    die = function(){
+        teachers.splice(teachers.indexOf(this), 1)
+    }
+
 
     setPositionx = function(ctx){
         this.positionx = ctx;
@@ -179,13 +195,6 @@ export function teach_despawn(){
     })
 }
 
-export function teach_die(){
-    teachers.forEach((teacher) => {
-        if (teacher.getHealthPoints <= 0){
-            return;                                                         // hier soll dann textur geändert werden und es muss gespliced werden
-        }
-    })
-}
 
 
 export function teachUpd(){
@@ -205,14 +214,13 @@ export function teachUpd(){
     /*teachers[0].attack();*/
 
     });
-    teach_die();
     teach_despawn();
 }
 
 export function teach_create(){
 
     if(teachers.length < spawn_limit){
-        teachers.push(new Teacher(100, 1, 1500, 50));
+        teachers.push(new Teacher(100, 0.5, 1500, 50));                 //healthPoints, Speed, AttackCooldown, AttackDamage
     }
 
     spiel.neuesfeld.getY(3,5);
