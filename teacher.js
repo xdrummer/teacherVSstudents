@@ -12,11 +12,10 @@ export class Teacher{
 
 
         this.positionx = 1000;
-        this.positiony = spiel.neuesfeld.getY(Math.floor(Math.random() * (5 - 1) + 1), 8)
+        this.positiony = spiel.neuesfeld.getY(Math.floor(Math.random() * (6 - 1) + 1), 8)
         //
         this.detectRange = 10;
         this.student_detected = false;
-        this.field = 
         this.healthPoints = healthPoints;
         this.attackCooldown = attackCooldown;
         this.attackDamage = attackDamage;
@@ -100,6 +99,10 @@ export class Teacher{
 
     }
 
+    hit = function(damage){
+        console.log("hit");
+    }
+
     setPositionx = function(ctx){
         this.positionx = ctx;
     }
@@ -134,6 +137,14 @@ export class Teacher{
 
     getPositiony = function(){
         return this.positiony;
+    }
+
+    getHeight = function(){
+        return this.height;
+    }
+
+    getWidth = function(){
+        return this.width;
     }
 
     getHealthPoints = function(){

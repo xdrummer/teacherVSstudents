@@ -3,6 +3,7 @@ export var kosten = new Map()
 kosten.set("Geniesser", 150)
 export var students = [];
 import * as spielF from "./Spielfeld.js";
+import * as teach from "./teacher.js";
 
 export class Student {
     constructor(x,y, buyCooldown, healthPoints, attackCooldown, attackDamage) {
@@ -52,9 +53,13 @@ export class Student {
         rowArray[this.fieldNumber].s = false;
     }
 
-    
+    getProjectiles = function(){
+        return this.projectiles;
+    }
 
-
+    getAttackDamage = function(){
+        return this.attackCooldown;
+    }
 }
 
 export class Projectile {
@@ -90,6 +95,30 @@ export class Projectile {
     delete = function(){
         this.student.projectiles.splice(this.student.projectiles.indexOf(this),1)
     } //ToDo Sich selbst aus dem Array entfernen
+
+
+    getParent = function(){
+        let return_value;
+        students.forEach((student) => {
+            if(student.getProjectiles().includes(this)){
+                return_value = student;
+            }
+        })
+
+        return return_value;
+    }
+
+
+    check_hit = function(){
+        teach.teachers.forEach((teacher) => {
+            if((this.x >= teacher.getPositionx() && this.x <= teacher.getPositionx() + teacher.getWidth()) && (this.y >= teacher.getPositiony() && this.y <= teacher.getPositiony() + teacher.getHeight())){
+                teacher.hit(this.getParent().getAttackDamage());
+                console.log("hitttiii")
+            }
+        });
+    }
+
+
 }
 
 export class Geniesser extends Student {
@@ -123,6 +152,7 @@ export function studentUp(){
     this.students.forEach((student)=>{
         student.projectiles.forEach((proji) =>{
             proji.selfUpdatePosition();
+            proji.check_hit();
         })
         if(checkEnemy >= 50){ // Nicht auf jeden Pixel überprüfen
             student.detectEnemy();
