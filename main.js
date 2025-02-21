@@ -123,13 +123,18 @@ function spawnStudent(kind,row,coloumn){
     let y = spielF.neuesfeld.getY(row,coloumn)
 
     if(kind == "Geniesser"){
-        if(cur.getScore()>=student.kosten.get("Geniesser")){
+        if(cur.getScore()>=student.kosten.get("Geniesser") && spielF.neuesfeld.getfelder(row)[coloumn].s == false ){
             student.spawnGeniesser(x,y-1)
             
             cur.setScore(-student.kosten.get("Geniesser"))
             spielF.neuesfeld.getfelder(row)[coloumn].s = true
         }else{
-            currencyAnimation(15)
+            if(cur.getScore()<student.kosten.get("Geniesser")){
+                currencyAnimation(15)
+            }else{
+                console.log("Da ist schon wer")
+            }
+            
         }
         
     }
