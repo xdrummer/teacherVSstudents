@@ -111,7 +111,7 @@ export class Projectile {
 
     check_hit = function(){
         teach.teachers.forEach((teacher) => {
-            if((this.x >= teacher.getPositionx() && this.x <= teacher.getPositionx() + teacher.getWidth()) && (this.y >= teacher.getPositiony() && this.y <= teacher.getPositiony() + teacher.getHeight())){
+            if((this.x + (this.width - 30) >= teacher.getPositionx() && this.x + (this.width - 30) <= teacher.getPositionx() + teacher.getWidth()) && (this.y >= teacher.getPositiony() && this.y <= teacher.getPositiony() + teacher.getHeight())){
                 teacher.hit(this.getParent().getAttackDamage());
                 this.delete();
 

@@ -1,10 +1,11 @@
 export var flipchart = document.getElementById("Spielfeld");
 export var papier = flipchart.getContext("2d");
 
-
+// Speicherort aller momentan existierender Währungseinheiten
 export var currencies = [];
 
-export var score = 0; 
+// aktueller Währungsstand des Spielers
+export var score = 0;
 
 export var despawn_timer = 15;
 
@@ -16,9 +17,15 @@ export class Currency {
     constructor() {
         this.bild = new Image();
         this.bild.src = "assets/coupon_currency.png";
-        this.x = Math.random() * (1000 - 200) + 200
+
+        // Random um pseudo zufällige Spawnpunkte auf der X Achse im Feld zu bekommen
+        this.x = Math.random() * (1000 - 200) + 200;                                                
         this.y = 200;
+
+        // Geschwindigkeit mit der die Einheit fällt
         this.speed = 0.5;
+
+        // "alter" der Einheit (für despawn)
         this.age = 0;
 
         this.scale = 0.15;
@@ -35,6 +42,8 @@ export class Currency {
         }
     };
 
+
+    // Funktion die checkt, ob die Maus momentan in der Fläche der Einheit liegt
     contains = function (mouseX, mouseY) {
         return (
             mouseX >= this.x &&
@@ -44,7 +53,7 @@ export class Currency {
         );
     };
 
-
+    // erhöhen des Alters
     setAge = function(){
         this.age++;
     }
@@ -61,30 +70,33 @@ export function getScore(ctx){
     return score
 }
 
+
+
 export function create(){
+    // < für die Anzahl der maximalen Einheiten auf einmal
     if(currencies.length < 4){
         currencies.push(new Currency);
     }
 }
 
-
+// update funktion um das Alter zu erhöhen bei jeder Einheit
 export function age_upd(){
-    currencies.forEach((element) => {
-        element.setAge();
+    currencies.forEach((currency) => {
+        currency.setAge();
     })
 }
 
-
+// despawn funktion, um die Einheiten nach der festgelegten Zeit despawnen zu lassen (15 sek)
 export function despawn(){
-    currencies.forEach((element) => {
-        if(element.age == despawn_timer){
-            currencies.splice(currencies.indexOf(element),1);
+    currencies.forEach((currency) => {
+        if(currency.age == despawn_timer){
+            currencies.splice(currencies.indexOf(currency),1);
         }
     })
 }
 
 
-
+// update funktion der Währung
 export function cur_update() {
     currencies.forEach((currency) => {
         currency.fall();
@@ -94,7 +106,7 @@ export function cur_update() {
 
 
 
-
+    // zeigt den Score im div an
     document.getElementById('cur_board').innerHTML = score;
 
 }

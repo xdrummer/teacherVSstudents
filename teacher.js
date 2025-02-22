@@ -2,9 +2,10 @@ import * as studi from "./student.js";
 import * as spiel from "./Spielfeld.js";
 
 
-
+// Speicherort aller momentan existierender Lehrer
 export var teachers = [];
 
+// Maximale Anzahl der Lehrer
 export var spawn_limit = 2; 
 
 export class Teacher{
@@ -13,7 +14,11 @@ export class Teacher{
 
 
         this.positionx = 1000;
+
+        //zufällige horizontale Reihe als Laufbahn
         this.positiony = spiel.neuesfeld.getY(Math.floor(Math.random() * (6 - 1) + 1), 8)
+        // Variable um den Lehrer zentrierter auf der Bahn schweben zu lassen
+        this.center_gap = 10;
         //
         this.detectRange = 10;
         this.student_detected = false;
@@ -23,26 +28,19 @@ export class Teacher{
         this.walking = true;
         this.lastWalk = false;
         this.speed = speed;
+        // zwischenspeicher 
         this.cache = attackCooldown;
         
         this.scale = 0.1;
 
         this.bild = new Image();
-        this.bild.src = "assets/teacher-jarre.png";
+        this.bild.src = "assets/Jarre_zombie.png";
 
         this.bild.onload = () => {
             this.width = this.bild.width * this.scale;
             this.height = this.bild.height * this.scale;
         }
     }
-
-
-    /*detectSchüler = function(){
-        teachers.forEach((teacher) => {
-            
-        })
-    }*/
-
 
 
     checkStudentStatus = function(){
@@ -101,12 +99,11 @@ export class Teacher{
     }
 
     hit = function(damage){
-        console.log("hit");
-        console.log(this.healthPoints);
 
+        // abziehen der Lebenspunkte (übergabe des Schadens)
         this.healthPoints = this.healthPoints - damage;
-        console.log(this.healthPoints);
 
+        // sind die Punkte 0 oder kleiner? => true: tot, splice
         if(this.healthPoints <= 0){
             this.die();
         }
@@ -155,6 +152,10 @@ export class Teacher{
         return this.positiony;
     }
 
+    getCenterGap = function(){
+        return this.center_gap;
+    }
+
     getHeight = function(){
         return this.height;
     }
@@ -187,6 +188,7 @@ export class Teacher{
 }
 
 
+// despawn funktion, falls der Lehrer am ende der Bahn angekommen ist
 export function teach_despawn(){
     teachers.forEach((teacher) => {
         if (teacher.positionx <= spiel.neuesfeld.getX(1,0) - teacher.width){
@@ -217,10 +219,14 @@ export function teachUpd(){
     teach_despawn();
 }
 
+
+// erzeugen der Lehrer
 export function teach_create(){
 
+    // spawnlimit noch nicht erreicht (siehe oben)
     if(teachers.length < spawn_limit){
-        teachers.push(new Teacher(100, 0.5, 1500, 50));                 //healthPoints, Speed, AttackCooldown, AttackDamage
+        // Parameter: healthPoints, Speed, AttackCooldown, AttackDamage
+        teachers.push(new Teacher(100, 0.25, 1500, 50));                 
     }
 
     spiel.neuesfeld.getY(3,5);
