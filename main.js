@@ -12,12 +12,12 @@ var selectedStudent;
 
 // Zeit in ms wie lange der Spieler zeit hat sich vorzubereiten bevor der erste Lehrer kommt
 // 1 sek = 1000
-var preparetime = 3000;
+var preparetime = 15000;
 
 
 var drawID;
 var cur_updateID;
-var createID;
+var cur_createID;
 var cur_DespawnID;
 var student_updateID;
 var teach_updID;
@@ -39,10 +39,10 @@ function onload() {
         cur.cur_update();
     }, 10);                                                            
 
-
-    createID = window.setInterval(()=>{
+    cur.create()
+    cur_createID = window.setInterval(()=>{
         cur.create();
-    }, 3000);
+    },10000);
 
     cur_DespawnID = window.setInterval(()=>{
         cur.age_upd();

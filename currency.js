@@ -7,7 +7,7 @@ export var currencies = [];
 // aktueller Währungsstand des Spielers
 export var score = 0;
 
-export var despawn_timer = 15;
+export var despawn_timer = 25;
 
 
 
@@ -23,7 +23,7 @@ export class Currency {
         this.y = 200;
 
         // Geschwindigkeit mit der die Einheit fällt
-        this.speed = 0.5;
+        this.speed = 0.25;
 
         // "alter" der Einheit (für despawn)
         this.age = 0;

@@ -168,6 +168,7 @@ export function studentUp(){
 }
 
 export function spawnGeniesser(x,y){
+    // x, y, buyCooldown, healthPoints, attackCooldown, attackDamage
     students.push(new Geniesser(x,y, 1, 250, 2000, 20));
 }
 

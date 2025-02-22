@@ -6,7 +6,7 @@ import * as spiel from "./Spielfeld.js";
 export var teachers = [];
 
 // Maximale Anzahl der Lehrer
-export var spawn_limit = 2; 
+export var spawn_limit = 1; 
 
 export class Teacher{
     constructor(healthPoints, speed, attackCooldown, attackDamage){
