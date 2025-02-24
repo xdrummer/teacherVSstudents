@@ -186,7 +186,7 @@ export class Feld{
 
         teach.teachers.forEach((teacher) => {
             // if X-Hitbox des Lehrers in X-Hitbox des Feldes liegt
-            if( (teacher.getPositionx() >= this.x && ( (teacher.getPositionx() + teacher.getWidth()) <= (this.x + this.w) ) ) && (teacher.getPositiony() - 10 == this.y) ){          
+            if( (teacher.getPositionx() >= this.x && ( (teacher.getPositionx() + teacher.getWidth()) <= (this.x + this.w) ) ) && (teacher.getPositiony()  == this.y) ){          
                 this.l = true;
             }else{
                 this.l = false;

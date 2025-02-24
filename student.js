@@ -26,9 +26,9 @@ export class Student {
     detectEnemy = function(){
         
         spielF.neuesfeld.getfelder(this.row).forEach((feld) => {
-            
+            console.log(feld)
             if (feld.getL() ==  true){
-                
+                console.log("Detected")
                 this.shoot()
                 
             }
