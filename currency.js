@@ -90,9 +90,9 @@ export function getScore(ctx){
 
 export function create(){
     // < für die Anzahl der maximalen Einheiten auf einmal
-    if(currencies.length < 4){
-        currencies.push(new Currency(Math.random() * (1000 - 200) + 200, 200));
-    }
+
+    currencies.push(new Currency(Math.random() * (1000 - 200) + 200, 200));
+
 }
 
 // update funktion um das Alter zu erhöhen bei jeder Einheit
