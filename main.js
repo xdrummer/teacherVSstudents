@@ -12,7 +12,7 @@ var selectedStudent;
 
 // Zeit in ms wie lange der Spieler zeit hat sich vorzubereiten bevor der erste Lehrer kommt
 // 1 sek = 1000
-var preparetime = 15000;
+var preparetime = 100;
 
 // Spawnlimit der Lehrer, ab dem gewonnen ist
 var winValue = 5;

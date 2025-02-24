@@ -86,7 +86,7 @@ export class Teacher{
 
         }
         if(this.walking == false){
-            if((Math.floor(this.positionx / 100)-2)*100+220<this.positionx){
+            if((Math.floor(this.positionx / 100)-2)*100+275<this.positionx){
                 this.lastWalk = true
             }else{
                 this.student_detected = true
