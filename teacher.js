@@ -218,18 +218,10 @@ export function teachUpd(){
 // erzeugen der Lehrer
 export function teach_create(){
 
-    // spawnlimit noch nicht erreicht (siehe oben)
-    if(teachers.length < spawn_limit){
-        // Parameter: healthPoints, Speed, AttackCooldown, AttackDamage
-        teachers.push(new Teacher(100, 0.15, 1500, 50));                 
-    }
+    // Parameter: healthPoints, Speed, AttackCooldown, AttackDamage
+    teachers.push(new Teacher(100, 0.15, 1500, 50));                 
+
 
     spiel.neuesfeld.getY(3,5);
-
-}
-
-export function increaseSpawnLimit(ctx){
-
-    spawn_limit = spawn_limit + ctx;
 
 }

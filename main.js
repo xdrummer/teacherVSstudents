@@ -38,7 +38,6 @@ window.addEventListener("load", () => {
 
 function gameUpdate(){
 
-    checkWin();
 
 }
 
@@ -49,6 +48,15 @@ export function changeSR_cur(ctx){
     cur_createID = window.setInterval(()=> {
         cur.create();
     },ctx);
+
+}
+
+export function changeSR_teach(ctx){
+
+    window.clearInterval(teach_createID);
+    teach_createID = window.setInterval(()=>{
+        teach.teach_create();
+    }, ctx);
 
 }
 
@@ -95,11 +103,7 @@ function onload() {
     window.setTimeout(() => {
         teach_createID = window.setInterval(()=>{
             teach.teach_create();
-        }, 5000);
-
-        window.setInterval(() => {
-            teach.increaseSpawnLimit(1);
-        }, 30000)
+        }, 20000);
     }, preparetime); 
 
 
@@ -242,10 +246,4 @@ function draw() {
 
     
     drawID = window.requestAnimationFrame(draw);
-}
-
-function checkWin(){
-    if(teach.spawn_limit == winValue){
-        window.alert("gewonnen lol");
-    }
 }
