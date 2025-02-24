@@ -1,4 +1,5 @@
 import * as teach from "./teacher.js";
+import * as main from "./main.js";
 
 var flipchart = document.getElementById("Spielfeld");
 var papier = flipchart.getContext("2d");
@@ -10,11 +11,15 @@ var span = document.getElementsByClassName("close")[0];
 var spawn_slide = document.getElementById("spawnrate_cur");
 var out_spawn_cur = document.getElementById("out_spawn_cur");
 
+var teach_spawn_slide = document.getElementById("spawnrate_teach");
+var out_spawn_teach = document.getElementById("out_spawn_teach");
+
 
 
 btn.onclick = function(){
     modal.style.display = "block";
 }
+
 
 span.onclick = function(){
     modal.style.display = "none";
@@ -24,15 +29,49 @@ span.onclick = function(){
 // spawnrate slider 
 
 out_spawn_cur.innerHTML = spawn_slide.value;
+out_spawn_teach.innerHTML = teach_spawn_slide.value;
 
 
 spawn_slide.oninput = function() {
 
+
+
+
     out_spawn_cur.innerHTML = this.value;
 
+    if (this.value == 0){
+        out_spawn_cur.innerHTML = "CHEAT MODE!!!!"
+        out_spawn_cur.style.color = "red";
+    }else{
+        out_spawn_cur.style.color = "black";
+    }
 
+    main.changeSR_cur(this.value * 1000);
 
 }
+
+teach_spawn_slide.oninput = function() {
+
+
+
+
+    out_spawn_teach.innerHTML = this.value;
+
+    if (this.value == 0){
+        out_spawn_teach.innerHTML = "HARDCORE MODE!!!!"
+        out_spawn_teach.style.color = "red";
+    }else{
+        out_spawn_teach.style.color = "black";
+    }
+
+    main.changeSR_teach(this.value * 1000);
+
+}
+
+
+    
+
+
 
 
 
@@ -303,6 +342,8 @@ export function spielfeldUpd(){
     neuesfeld.r5.forEach((feld) => {
         feld.checkTeacher();
     });
+
+    menu_click();
 
 }
 

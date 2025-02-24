@@ -8,6 +8,10 @@
 
 }
 
+.out_spawn_cur {
+    color: black;
+}
+
 .modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */

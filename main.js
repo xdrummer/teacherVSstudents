@@ -27,7 +27,7 @@ var teach_updID;
 var teach_createID;
 var spielF_UpdID;
 
-var spawnRateCur = 10000;
+
 
 window.addEventListener("load", () => {
     // Einfaches onload im body funktioniert warum auch immer nicht
@@ -38,7 +38,25 @@ window.addEventListener("load", () => {
 
 function gameUpdate(){
 
-    checkWin();
+
+}
+
+
+export function changeSR_cur(ctx){
+
+    window.clearInterval(cur_createID);
+    cur_createID = window.setInterval(()=> {
+        cur.create();
+    },ctx);
+
+}
+
+export function changeSR_teach(ctx){
+
+    window.clearInterval(teach_createID);
+    teach_createID = window.setInterval(()=>{
+        teach.teach_create();
+    }, ctx);
 
 }
 
@@ -63,7 +81,7 @@ function onload() {
     cur.create()
     cur_createID = window.setInterval(()=> {
         cur.create();
-    },spawnRateCur);
+    },10000);
 
     cur_DespawnID = window.setInterval(()=> {
         cur.age_upd();
@@ -85,11 +103,7 @@ function onload() {
     window.setTimeout(() => {
         teach_createID = window.setInterval(()=>{
             teach.teach_create();
-        }, 5000);
-
-        window.setInterval(() => {
-            teach.increaseSpawnLimit(1);
-        }, 30000)
+        }, 20000);
     }, preparetime); 
 
 
@@ -161,11 +175,6 @@ function onload() {
     });
 }
 
-function setSpawnRateCur(ctx){
-
-    spawnRateCur = ctx * 1000;
-
-}
 
 
 function spawnStudent(kind,row,coloumn){
@@ -237,10 +246,4 @@ function draw() {
 
     
     drawID = window.requestAnimationFrame(draw);
-}
-
-function checkWin(){
-    if(teach.spawn_limit == winValue){
-        window.alert("gewonnen lol");
-    }
 }
