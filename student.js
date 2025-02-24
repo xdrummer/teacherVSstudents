@@ -24,14 +24,16 @@ export class Student {
     }
 
     detectEnemy = function(){
-        /*let row = this.position.getRow(); 
-
-        for (let j = 0; j < row.length; j++) { 
-            if (row[j].hasEnemy) {
-                this.shoot();
+        
+        spielF.neuesfeld.getfelder(this.row).forEach((feld) => {
+            
+            if (feld.getL() ==  true){
+                
+                this.shoot()
+                
             }
-        }*/
-       this.shoot()
+        })
+      
     } 
 
     shoot() {

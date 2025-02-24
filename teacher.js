@@ -112,6 +112,8 @@ export class Teacher{
 
 
     die = function(){
+        let fieldNumberNext = Math.floor(this.positionx / 100)-2
+        spiel.neuesfeld.getfelder((this.positiony-200)/100 + 1)[fieldNumberNext].l = false
         teachers.splice(teachers.indexOf(this), 1)
     }
 
