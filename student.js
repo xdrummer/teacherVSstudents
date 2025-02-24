@@ -24,11 +24,11 @@ export class Student {
     }
 
     detectEnemy = function(){
-        
+        console.log("Detect aufgerufen")
         spielF.neuesfeld.getfelder(this.row).forEach((feld) => {
-            console.log(feld)
+            
             if (feld.getL() ==  true){
-                console.log("Detected")
+                console.log("Shoot aufgerufen");
                 this.shoot()
                 
             }
@@ -142,7 +142,7 @@ export class Geniesser extends Student {
         console.log(this.attackCooldown);*/
 
         if (now - this.lastShot >= this.attackCooldown) {
-            console.log("Shoot");
+            
 
             
             this.projectiles.push(new Projectile("/assets/cork.png", this.x+50, this.y+45, 1, 0.15,this)); // ToDo Übergabe Parameter müssen abhängig von der Position des Towers sein.
