@@ -62,8 +62,24 @@ export class Currency {
 }
 
 
+export function zentrieren(r){
+       if(r == 50){
+        document.getElementById("cur_board").style.left = '-5px'
+       }
+       if(r == 100){
+        document.getElementById("cur_board").style.left = '-15px'
+       }
+        
+    
+}
 export function setScore(ctx){
     score = score + ctx;
+    if(this.score == 50){
+        zentrieren(50)
+    }
+    if(this.score == 100){
+        zentrieren(100)
+    }
 }
 
 export function getScore(ctx){
@@ -110,4 +126,3 @@ export function cur_update() {
     document.getElementById('cur_board').innerHTML = score;
 
 }
-
