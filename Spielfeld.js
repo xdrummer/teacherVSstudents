@@ -3,6 +3,40 @@ import * as teach from "./teacher.js";
 var flipchart = document.getElementById("Spielfeld");
 var papier = flipchart.getContext("2d");
 
+var modal = document.getElementById("menu_modal");
+var btn = document.getElementById("myBtn");
+var span = document.getElementsByClassName("close")[0];
+
+var spawn_slide = document.getElementById("spawnrate_cur");
+var out_spawn_cur = document.getElementById("out_spawn_cur");
+
+
+
+btn.onclick = function(){
+    modal.style.display = "block";
+}
+
+span.onclick = function(){
+    modal.style.display = "none";
+}
+
+
+// spawnrate slider 
+
+out_spawn_cur.innerHTML = spawn_slide.value;
+
+
+spawn_slide.oninput = function() {
+
+    out_spawn_cur.innerHTML = this.value;
+
+
+
+}
+
+
+
+
 export class Spielfeld{
     constructor(){
         this.r1 = [];
@@ -130,6 +164,7 @@ export class Auswahl{
 
 export var auswahl = new Auswahl()
 export var neuesfeld = new Spielfeld()
+
 export class Feld{
     constructor(x,y,w,h,s,l){
         this.x = x;
@@ -146,11 +181,12 @@ export class Feld{
     getL = function(){
         return this.l;
     }
+
     checkTeacher = function(){
 
         teach.teachers.forEach((teacher) => {
             // if X-Hitbox des Lehrers in X-Hitbox des Feldes liegt
-            if(teacher.getPositionx() >= this.x && ((teacher.getPositionx() + teacher.getWidth()) <= (this.x + this.w))){          
+            if( (teacher.getPositionx() >= this.x && ( (teacher.getPositionx() + teacher.getWidth()) <= (this.x + this.w) ) ) && (teacher.getPositiony() - 10 == this.y) ){          
                 this.l = true;
             }else{
                 this.l = false;
