@@ -1,3 +1,5 @@
+import * as teach from "./teacher.js";
+
 var flipchart = document.getElementById("Spielfeld");
 var papier = flipchart.getContext("2d");
 
@@ -135,12 +137,24 @@ export class Feld{
         this.w = w;
         this.h = h;
         this.s = false;
-        this.l = false
+        this.l = false;
     }
     getX = function(){
         return this.x
     }
   
+    checkTeacher = function(){
+
+        teach.teachers.forEach((teacher) => {
+            if(teacher.getPositionx() >= this.x && ((teacher.getPositionx() + teacher.getWidth()) <= (this.x + this.w))){
+                this.l = true;
+            }else{
+                this.l = false;
+            }
+        })
+
+    }
+
 }
 export function Spielfeldzeichnen(){
 var verschub = 100;
@@ -230,6 +244,26 @@ for(let i=1; i < 6; i= i+1){
 // papier.fillRect(100,100,100,100)
 
 */
+
+}
+
+export function spielfeldUpd(){
+
+    neuesfeld.r1.forEach((feld) => {
+        feld.checkTeacher();
+    });
+    neuesfeld.r2.forEach((feld) => {
+        feld.checkTeacher();
+    });
+    neuesfeld.r3.forEach((feld) => {
+        feld.checkTeacher();
+    });
+    neuesfeld.r4.forEach((feld) => {
+        feld.checkTeacher();
+    });
+    neuesfeld.r5.forEach((feld) => {
+        feld.checkTeacher();
+    });
 
 }
 

@@ -22,6 +22,7 @@ var cur_DespawnID;
 var student_updateID;
 var teach_updID;
 var teach_createID;
+var spielF_UpdID;
 
 window.addEventListener("load", () => {
     // Einfaches onload im body funktioniert warum auch immer nicht
@@ -54,6 +55,10 @@ function onload() {
 
     student_updateID =  window.setInterval(()=>{
         student.studentUp();
+    },10);
+
+    spielF_UpdID = window.setInterval(() =>{
+        spielF.spielfeldUpd();
     },10);
 
     // erzeugen der Lehrer wartet einen Moment 

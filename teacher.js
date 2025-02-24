@@ -13,7 +13,7 @@ export class Teacher{
         
 
 
-        this.positionx = 1000;
+        this.positionx = 1050;
 
         //zufällige horizontale Reihe als Laufbahn
         this.positiony = spiel.neuesfeld.getY(Math.floor(Math.random() * (6 - 1) + 1), 8)
@@ -226,7 +226,7 @@ export function teach_create(){
     // spawnlimit noch nicht erreicht (siehe oben)
     if(teachers.length < spawn_limit){
         // Parameter: healthPoints, Speed, AttackCooldown, AttackDamage
-        teachers.push(new Teacher(100, 0.25, 1500, 50));                 
+        teachers.push(new Teacher(100, 0.15, 1500, 50));                 
     }
 
     spiel.neuesfeld.getY(3,5);
