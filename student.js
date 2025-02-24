@@ -1,9 +1,10 @@
-
 export var kosten = new Map()
 kosten.set("Geniesser", 150)
 export var students = [];
+export var drucker = [];
 import * as spielF from "./Spielfeld.js";
 import * as teach from "./teacher.js";
+import * as cur from "./currency.js";
 
 export class Student {
     constructor(x,y, buyCooldown, healthPoints, attackCooldown, attackDamage) {
@@ -149,6 +150,35 @@ export class Geniesser extends Student {
     }
 }
 var checkEnemy = 0;
+
+export class Drucker extends Student {
+    constructor(x,y,  buyCooldown, healthPoints, attackCooldown){
+        super(x,y, buyCooldown, healthPoints, attackCooldown);
+        //this.src1;
+
+        //this.skin = new Image();
+        //this.skin.src = this.src1;
+
+        this.lastPrint = Date.now();
+
+    }
+
+    generate = function(){
+
+        let now = Date.now();
+
+        if(now - this.lastPrint >= this.attackCooldown){
+
+            console.log("printed");
+            cur.currencies.push(new cur.Currency(this.x, this.y));
+
+            this.lastPrint = now;
+        }
+
+    }
+
+}
+
 export function studentUp(){
     this.students.forEach((student)=>{
         student.projectiles.forEach((proji) =>{
@@ -164,6 +194,10 @@ export function studentUp(){
         if(student.getHealthPoints()<=0){
             student.despawn()
         }
+    })
+
+    this.drucker.forEach((printer) =>{
+        printer.generate();
     })
 }
 

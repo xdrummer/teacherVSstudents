@@ -143,16 +143,19 @@ export class Feld{
         return this.x
     }
   
+    getL = function(){
+        return this.l;
+    }
     checkTeacher = function(){
 
         teach.teachers.forEach((teacher) => {
-            if(teacher.getPositionx() >= this.x && ((teacher.getPositionx() + teacher.getWidth()) <= (this.x + this.w))){
+            // if X-Hitbox des Lehrers in X-Hitbox des Feldes liegt
+            if(teacher.getPositionx() >= this.x && ((teacher.getPositionx() + teacher.getWidth()) <= (this.x + this.w))){          
                 this.l = true;
             }else{
                 this.l = false;
             }
         })
-
     }
 
 }

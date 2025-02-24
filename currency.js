@@ -14,13 +14,13 @@ export var despawn_timer = 25;
 
 
 export class Currency {
-    constructor() {
+    constructor(x, y) {
         this.bild = new Image();
         this.bild.src = "assets/coupon_currency.png";
 
         // Random um pseudo zufällige Spawnpunkte auf der X Achse im Feld zu bekommen
-        this.x = Math.random() * (1000 - 200) + 200;                                                
-        this.y = 200;
+        this.x = x;                                              
+        this.y = y;
 
         // Geschwindigkeit mit der die Einheit fällt
         this.speed = 0.25;
@@ -75,7 +75,7 @@ export function getScore(ctx){
 export function create(){
     // < für die Anzahl der maximalen Einheiten auf einmal
     if(currencies.length < 4){
-        currencies.push(new Currency);
+        currencies.push(new Currency(Math.random() * (1000 - 200) + 200, 200));
     }
 }
 

@@ -14,7 +14,10 @@ var selectedStudent;
 // 1 sek = 1000
 var preparetime = 15000;
 
+// Spawnlimit der Lehrer, ab dem gewonnen ist
+var winValue = 5;
 
+var gameUpdateID;
 var drawID;
 var cur_updateID;
 var cur_createID;
@@ -31,33 +34,48 @@ window.addEventListener("load", () => {
                                                                                 
 });
 
+function gameUpdate(){
 
+    checkWin();
+
+}
 
 function onload() {
+
+    // x, y, buycooldown, HealthPoints, AttackCooldown (print cooldown)
+    student.drucker.push(new student.Drucker(300, 300, 100, 100, 5000));
+    console.log(student.drucker);
+
     spielF.Spielfeldzeichnen();
+
+    // alle Update Methoden der verschiedenen Objekte
+
+    gameUpdateID = window.setInterval(() => {
+        gameUpdate();
+    },10)
 
     cur_updateID = window.setInterval(() => {
         cur.cur_update();
     }, 10);                                                            
 
     cur.create()
-    cur_createID = window.setInterval(()=>{
+    cur_createID = window.setInterval(()=> {
         cur.create();
     },10000);
 
-    cur_DespawnID = window.setInterval(()=>{
+    cur_DespawnID = window.setInterval(()=> {
         cur.age_upd();
     }, 1000);
 
-    teach_updID = window.setInterval(()=>{
+    teach_updID = window.setInterval(()=> {
         teach.teachUpd();
     },10);
 
-    student_updateID =  window.setInterval(()=>{
+    student_updateID =  window.setInterval(()=> {
         student.studentUp();
     },10);
 
-    spielF_UpdID = window.setInterval(() =>{
+    spielF_UpdID = window.setInterval(() => {
         spielF.spielfeldUpd();
     },10);
 
@@ -66,7 +84,13 @@ function onload() {
         teach_createID = window.setInterval(()=>{
             teach.teach_create();
         }, 5000);
+
+        window.setInterval(() => {
+            teach.increaseSpawnLimit(1);
+        }, 30000)
     }, preparetime); 
+
+
 
     
 
@@ -207,3 +231,8 @@ function draw() {
     drawID = window.requestAnimationFrame(draw);
 }
 
+function checkWin(){
+    if(teach.spawn_limit == winValue){
+        window.alert("gewonnen lol");
+    }
+}

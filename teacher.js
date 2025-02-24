@@ -208,13 +208,6 @@ export function teachUpd(){
         }
         
 
-        /*if(teacher.getAttackCooldown() !== teacher.getCache()){
-            teacher.setAttackCooldown(teacher.getAttackCooldown() - 1);
-        }*/
-
-
-    /*teachers[0].attack();*/
-
     });
     teach_despawn();
 }
@@ -230,5 +223,11 @@ export function teach_create(){
     }
 
     spiel.neuesfeld.getY(3,5);
+
+}
+
+export function increaseSpawnLimit(ctx){
+
+    spawn_limit = spawn_limit + ctx;
 
 }
