@@ -1,7 +1,6 @@
 export var kosten = new Map()
 kosten.set("Geniesser", 150)
 export var students = [];
-export var drucker = [];
 import * as spielF from "./Spielfeld.js";
 import * as teach from "./teacher.js";
 import * as cur from "./currency.js";
@@ -46,6 +45,14 @@ export class Student {
 
     shoot() {
         // Wird in Unterklassen implementiert
+    }
+
+    switch_frames(){
+
+    }
+
+    generate(){
+
     }
 
     setHealthPoints = function(ctx){
@@ -140,6 +147,8 @@ export class Geniesser extends Student {
         // ToDo Animation etc. 
         this.skin = new Image()
         this.skin.src = this.src1;
+
+
         
     }
 
@@ -164,14 +173,32 @@ var checkEnemy = 0;
 export class Drucker extends Student {
     constructor(x,y,  buyCooldown, healthPoints, attackCooldown){
         super(x,y, buyCooldown, healthPoints, attackCooldown);
-        //this.src1;
+        this.src1 = "/assets/printer_frame1.png";
+        this.src2 = "/assets/printer_frame2.png";
 
-        //this.skin = new Image();
-        //this.skin.src = this.src1;
+        this.skin = new Image();
+        this.skin.src = this.src1;
 
         this.lastPrint = Date.now();
 
+        this.frameswitched = false;
+
     }
+
+    switch_frames = function(){
+        
+        if(this.frameswitched == false){
+            this.skin.src = this.src2;
+
+        }else{
+            this.skin.src = this.src1;
+
+        }
+        console.log(this.frameswitched)
+        this.frameswitched =!(this.frameswitched);
+
+    }
+
 
     generate = function(){
 
@@ -180,10 +207,14 @@ export class Drucker extends Student {
         if(now - this.lastPrint >= this.attackCooldown){
 
             console.log("printed");
-            cur.currencies.push(new cur.Currency(this.x, this.y));
+            cur.currencies.push(new cur.Currency(this.x, this.y+20));
 
             this.lastPrint = now;
+
+            this.switch_frames();
         }
+
+        
 
     }
 
@@ -206,7 +237,7 @@ export function studentUp(){
         }
     })
 
-    this.drucker.forEach((printer) =>{
+    this.students.forEach((printer) =>{
         printer.generate();
     })
 }

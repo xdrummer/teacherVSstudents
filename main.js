@@ -26,6 +26,7 @@ var student_updateID;
 var teach_updID;
 var teach_createID;
 var spielF_UpdID;
+var printer_framesID;
 
 
 
@@ -63,8 +64,8 @@ export function changeSR_teach(ctx){
 function onload() {
 
     // x, y, buycooldown, HealthPoints, AttackCooldown (print cooldown)
-    student.drucker.push(new student.Drucker(300, 300, 100, 100, 5000));
-    console.log(student.drucker);
+    student.students.push(new student.Drucker(300, 300, 100, 100, 5000));
+    console.log(student.students);
 
     spielF.Spielfeldzeichnen();
 
@@ -94,6 +95,7 @@ function onload() {
     student_updateID =  window.setInterval(()=> {
         student.studentUp();
     },10);
+
 
     spielF_UpdID = window.setInterval(() => {
         spielF.spielfeldUpd();
@@ -219,11 +221,7 @@ function draw() {
     papier.clearRect(0, 0, flipchart.width, flipchart.height);
     spielF.Spielfeldzeichnen();
     
-    cur.currencies.forEach((currency) => {                                                                  
 
-        papier.drawImage(currency.bild, currency.x, currency.y, currency.width, currency.height);
-        
-    });
 
     student.students.forEach((stu) => {
         papier.drawImage(stu.skin, stu.x, stu.y);
@@ -233,10 +231,21 @@ function draw() {
             }
         });
     });
+
+    student.students.forEach((printer) => {
+        papier.drawImage(printer.skin, printer.x, printer.y);
+    })
     
 
     teach.teachers.forEach((tea) => {
         papier.drawImage(tea.bild, tea.positionx, tea.positiony + tea.getCenterGap(), tea.width, tea.height);
+    });
+
+
+    cur.currencies.forEach((currency) => {                                                                  
+
+        papier.drawImage(currency.bild, currency.x, currency.y, currency.width, currency.height);
+        
     });
 
     
