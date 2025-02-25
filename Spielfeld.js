@@ -343,7 +343,5 @@ export function spielfeldUpd(){
         feld.checkTeacher();
     });
 
-    menu_click();
-
 }
 
