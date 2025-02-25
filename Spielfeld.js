@@ -225,7 +225,7 @@ export class Feld{
 
         teach.teachers.forEach((teacher) => {
             // if X-Hitbox des Lehrers in X-Hitbox des Feldes liegt
-            if( (teacher.getPositionx() >= this.x && ( (teacher.getPositionx() + teacher.getWidth()) <= (this.x + this.w) ) ) && (teacher.getPositiony()  == this.y) ){          
+            if( ((teacher.getPositionx() >= this.x && ( (teacher.getPositionx()) <= (this.x + this.w) ) ) && (teacher.getPositiony()  == this.y) )){          
                 this.l = true;
             }else{
                 this.l = false;
@@ -328,20 +328,37 @@ for(let i=1; i < 6; i= i+1){
 export function spielfeldUpd(){
 
     neuesfeld.r1.forEach((feld) => {
+        if(feld.l == true){
+            console.log("Feld", feld, "true")
+        }
         feld.checkTeacher();
     });
     neuesfeld.r2.forEach((feld) => {
+        if(feld.l == true){
+            console.log("Feld", feld, "true")
+        }
         feld.checkTeacher();
     });
     neuesfeld.r3.forEach((feld) => {
+        if(feld.l == true){
+            console.log("Feld", feld, "true")
+        }
         feld.checkTeacher();
     });
     neuesfeld.r4.forEach((feld) => {
+        if(feld.l == true){
+            console.log("Feld", feld, "true")
+        }
         feld.checkTeacher();
     });
     neuesfeld.r5.forEach((feld) => {
+        if(feld.l == true){
+            console.log("Feld", feld, "true")
+        }
         feld.checkTeacher();
     });
+
+    
 
 }
 

@@ -27,9 +27,17 @@ export class Student {
         console.log("Detect aufgerufen")
         spielF.neuesfeld.getfelder(this.row).forEach((feld) => {
             
-            if (feld.getL() ==  true){
+            if (feld.getL() ==  true ){
                 console.log("Shoot aufgerufen");
                 this.shoot()
+                
+            }else{
+                if(spielF.neuesfeld.getfelder(this.row)[spielF.neuesfeld.getfelder(this.row).indexOf(feld)-1]){
+                    if(spielF.neuesfeld.getfelder(this.row)[spielF.neuesfeld.getfelder(this.row).indexOf(feld)-1].getL() == true){
+                        console.log("Shoot aufgerufen");
+                        this.shoot()
+                    }
+                }
                 
             }
         })

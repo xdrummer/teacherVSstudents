@@ -16,7 +16,7 @@ export class Teacher{
         this.positionx = 1050;
 
         //zufällige horizontale Reihe als Laufbahn
-        this.positiony = spiel.neuesfeld.getY(Math.floor(Math.random() * (6 - 1) + 1), 8)
+        this.positiony = spiel.neuesfeld.getY(1, 8)//spiel.neuesfeld.getY(Math.floor(Math.random() * (6 - 1) + 1), 8)
         // Variable um den Lehrer zentrierter auf der Bahn schweben zu lassen
         this.center_gap = 10;
         //
@@ -114,6 +114,7 @@ export class Teacher{
     die = function(){
         let fieldNumberNext = Math.floor(this.positionx / 100)-2
         spiel.neuesfeld.getfelder((this.positiony-200)/100 + 1)[fieldNumberNext].l = false
+        spiel.neuesfeld.getfelder((this.positiony-200)/100 + 1)[fieldNumberNext+1].l = false
         teachers.splice(teachers.indexOf(this), 1)
     }
 
