@@ -232,7 +232,7 @@ export function spawnGeniesser(x,y){
 }
 export function spawnDrucker(x,y){
     // x, y, buyCooldown, healthPoints, attackCooldown / Printcooldown, attackDamage
-    students.push(new Drucker(x,y, 1, 150, 2000, 0));
+    students.push(new Drucker(x,y, 1, 150, 5000, 0));
 }
 
 
