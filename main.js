@@ -64,9 +64,8 @@ export function changeSR_teach(ctx){
 
 function onload() {
 
-    // x, y, buycooldown, HealthPoints, AttackCooldown (print cooldown)
-    student.students.push(new student.Drucker(300, 300, 100, 100, 5000));
-    console.log(student.students);
+    
+    
 
     spielF.Spielfeldzeichnen();
 
@@ -201,6 +200,22 @@ function spawnStudent(kind,row,coloumn){
         }
         
     }
+    if(kind == "Drucker"){
+        if(cur.getScore()>=student.kosten.get("Drucker") && spielF.neuesfeld.getfelder(row)[coloumn].s == false ){
+            student.spawnDrucker(x,y-1);
+            
+            cur.setScore(-student.kosten.get("Drucker"));
+            spielF.neuesfeld.getfelder(row)[coloumn].s = true;
+        }else{
+            if(cur.getScore()<student.kosten.get("Drucker")){
+                currencyAnimation(15);
+            }else{
+                console.log("Da ist schon wer");
+            }
+            
+        }
+        
+    }
 }
 
 async function currencyAnimation(ctx){
@@ -253,8 +268,8 @@ function draw() {
     
     
     
-    papier.drawImage(spielF.auswahl.schueler[0][6],spielF.auswahl.getX("Geniesser"),spielF.auswahl.getY("Geniesser"),spielF.auswahl.getW("Geniesser"),spielF.auswahl.getH("Geniesser"));
-
+    papier.drawImage(spielF.auswahl.getImg("Geniesser"),spielF.auswahl.getX("Geniesser"),spielF.auswahl.getY("Geniesser"),spielF.auswahl.getW("Geniesser"),spielF.auswahl.getH("Geniesser"));
+    papier.drawImage(spielF.auswahl.getImg("Drucker"),spielF.auswahl.getX("Drucker"),spielF.auswahl.getY("Drucker"),spielF.auswahl.getW("Drucker"),spielF.auswahl.getH("Drucker"));
     
     drawID = window.requestAnimationFrame(draw);
 }

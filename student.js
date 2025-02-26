@@ -1,5 +1,6 @@
 export var kosten = new Map()
 kosten.set("Geniesser", 150)
+kosten.set("Drucker", 350)
 export var students = [];
 import * as spielF from "./Spielfeld.js";
 import * as teach from "./teacher.js";
@@ -228,6 +229,10 @@ export function studentUp(){
 export function spawnGeniesser(x,y){
     // x, y, buyCooldown, healthPoints, attackCooldown, attackDamage
     students.push(new Geniesser(x,y, 1, 250, 2000, 20));
+}
+export function spawnDrucker(x,y){
+    // x, y, buyCooldown, healthPoints, attackCooldown / Printcooldown, attackDamage
+    students.push(new Drucker(x,y, 1, 150, 2000, 0));
 }
 
 

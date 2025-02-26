@@ -125,7 +125,8 @@ export class Spielfeld{
 
 export class Auswahl{
     constructor(){
-        this.schueler = [["Geniesser","/assets/geniesser.png", 300,30,100,100,new Image(),"/assets/geniesserSelected.png"]]
+        this.schueler = [   ["Geniesser","/assets/geniesser.png", 300,30,100,100,new Image(),"/assets/geniesserSelected.png"],
+                            ["Drucker","/assets/printer_frame1.png", 400,30,100,100,new Image(),"/assets/printer_frame1Selected.png"]]
 
 
         this.schueler.forEach(sch =>{
@@ -166,6 +167,7 @@ export class Auswahl{
                 
             }
         })
+        
         return returnValue
 
     };
