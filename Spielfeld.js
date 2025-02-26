@@ -221,17 +221,7 @@ export class Feld{
         return this.l;
     }
 
-    checkTeacher = function(){
-
-        teach.teachers.forEach((teacher) => {
-            // if X-Hitbox des Lehrers in X-Hitbox des Feldes liegt
-            if( ((teacher.getPositionx() >= this.x && ( (teacher.getPositionx()) <= (this.x + this.w) ) ) && (teacher.getPositiony()  == this.y) )){          
-                this.l = true;
-            }else{
-                this.l = false;
-            }
-        })
-    }
+    
 
 }
 export function Spielfeldzeichnen(){
@@ -308,6 +298,7 @@ for(let i=1; i < 6; i= i+1){
     papier.strokeRect(1000,1,100,50)
     papier.font = "bold 35px Arial";  // Hier können Sie die Schriftart und -größe definieren
     papier.fillText("Menü", 1004, 37)
+    initDetection()
     
 
 }
@@ -327,7 +318,7 @@ for(let i=1; i < 6; i= i+1){
 
 export function spielfeldUpd(){
 
-    neuesfeld.r1.forEach((feld) => {
+    /*neuesfeld.r1.forEach((feld) => {
         if(feld.l == true){
             console.log("Feld", feld, "true")
         }
@@ -356,9 +347,28 @@ export function spielfeldUpd(){
             console.log("Feld", feld, "true")
         }
         feld.checkTeacher();
-    });
+    });*/
 
+    for(let j = 1; j<=5;j++){
+        let array = neuesfeld.getfelder(j)
+        let temp = false
+        teach.teachers.forEach((teach) => {
+            let y = teach.getPositiony()
+            if((y-100)/100 == j){
+                temp = true;
+            }
+        })
+        array[9] = temp
+    }
     
 
 }
 
+function initDetection(){
+    for(let i = 1; i<=5; i++){
+        let array = neuesfeld.getfelder(i)
+        if(array.length == 9){
+            array.push(false)
+        }
+    }
+}

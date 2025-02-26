@@ -30,6 +30,7 @@ var printer_framesID;
 
 
 
+
 window.addEventListener("load", () => {
     // Einfaches onload im body funktioniert warum auch immer nicht
     // habe daher einfach nen event listener mit load genutzt das funktioniert
@@ -107,6 +108,7 @@ function onload() {
             teach.teach_create();
         }, 20000);
     }, preparetime); 
+
 
 
 
