@@ -156,7 +156,7 @@ export class Geniesser extends Student {
         }
     }
 }
-var checkEnemy = 0;
+
 
 export class Drucker extends Student {
     constructor(x,y,  buyCooldown, healthPoints, attackCooldown){
@@ -214,12 +214,7 @@ export function studentUp(){
             proji.selfUpdatePosition();
             proji.check_hit();
         })
-        if(checkEnemy >= 50){ // Nicht auf jeden Pixel überprüfen
-            student.detectEnemy();
-            checkEnemy = 0
-        }else{
-            checkEnemy ++
-        }
+        student.detectEnemy()
         if(student.getHealthPoints()<=0){
             student.despawn()
         }
