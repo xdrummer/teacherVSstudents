@@ -76,7 +76,7 @@ teach_spawn_slide.oninput = function() {
 
 
 
-export class Spielfeld{
+export class Spielfeld{ 
     constructor(){
         this.r1 = [];
         this.r2 = [];
@@ -123,7 +123,7 @@ export class Spielfeld{
 
 
 
-export class Auswahl{
+export class Auswahl{ // Jan Gerdes
     constructor(){
         this.schueler = [   ["Geniesser","/assets/geniesser.png", 300,30,100,100,new Image(),"/assets/geniesserSelected.png"],
                             ["Drucker","/assets/printer_frame1.png", 400,30,100,100,new Image(),"/assets/printer_frame1Selected.png"],
@@ -319,38 +319,9 @@ for(let i=1; i < 6; i= i+1){
 
 }
 
-export function spielfeldUpd(){
+export function spielfeldUpd(){ // Jan Gerdes
 
-    /*neuesfeld.r1.forEach((feld) => {
-        if(feld.l == true){
-            console.log("Feld", feld, "true")
-        }
-        feld.checkTeacher();
-    });
-    neuesfeld.r2.forEach((feld) => {
-        if(feld.l == true){
-            console.log("Feld", feld, "true")
-        }
-        feld.checkTeacher();
-    });
-    neuesfeld.r3.forEach((feld) => {
-        if(feld.l == true){
-            console.log("Feld", feld, "true")
-        }
-        feld.checkTeacher();
-    });
-    neuesfeld.r4.forEach((feld) => {
-        if(feld.l == true){
-            console.log("Feld", feld, "true")
-        }
-        feld.checkTeacher();
-    });
-    neuesfeld.r5.forEach((feld) => {
-        if(feld.l == true){
-            console.log("Feld", feld, "true")
-        }
-        feld.checkTeacher();
-    });*/
+
 
     for(let j = 1; j<=5;j++){
         let array = neuesfeld.getfelder(j)
@@ -367,7 +338,7 @@ export function spielfeldUpd(){
 
 }
 
-function initDetection(){
+function initDetection(){ // Jan Gerdes
     for(let i = 1; i<=5; i++){
         let array = neuesfeld.getfelder(i)
         if(array.length == 9){

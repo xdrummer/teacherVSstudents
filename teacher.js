@@ -32,7 +32,7 @@ export class Teacher{
         this.cache = attackCooldown;
         
         this.scale = 0.1;
-
+        this.hitted = "assets/Jarre_zombieHit.png";
         this.bild = new Image();
         this.bild.src = "assets/Jarre_zombie.png";
 
@@ -99,7 +99,7 @@ export class Teacher{
 
     }
 
-    hit = function(damage){
+    hit = async function(damage){
 
         // abziehen der Lebenspunkte (übergabe des Schadens)
         this.healthPoints = this.healthPoints - damage;
@@ -108,6 +108,9 @@ export class Teacher{
         if(this.healthPoints <= 0){
             this.die();
         }
+        this.bild.src = this.hitted;
+        await new Promise(resolve => setTimeout(resolve, 100));
+        this.bild.src = "assets/Jarre_zombie.png";
 
     }
 

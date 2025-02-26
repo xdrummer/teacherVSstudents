@@ -1,3 +1,5 @@
+// Fast komplett Jan Gerdes
+
 export var kosten = new Map()
 kosten.set("Geniesser", 150)
 kosten.set("Drucker", 350)
@@ -38,11 +40,11 @@ export class Student {
     }
 
     switch_frames(){
-
+        // Wird in Unterklassen implementiert
     }
 
     generate(){
-
+        // Wird in Unterklassen implementiert
     }
 
     setHealthPoints = function(ctx){
@@ -102,7 +104,7 @@ export class Projectile {
 
     delete = function(){
         this.student.projectiles.splice(this.student.projectiles.indexOf(this),1)
-    } //ToDo Sich selbst aus dem Array entfernen
+    } 
 
 
     getParent = function(){

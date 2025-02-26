@@ -131,7 +131,7 @@ function onload() {
                 break;
             }
         }
-        if(spielF.auswahl.contains(mouseX,mouseY,"b")){
+        if(spielF.auswahl.contains(mouseX,mouseY,"b")){ // ab hier Jan Gerdes
             id = spielF.auswahl.contains(mouseX,mouseY,"i");
             
             
@@ -180,7 +180,7 @@ function onload() {
 
 
 
-function spawnStudent(kind,row,coloumn){
+function spawnStudent(kind,row,coloumn){ // Jan Gerdes
     let x = spielF.neuesfeld.getX(row,coloumn);
     let y = spielF.neuesfeld.getY(row,coloumn);
 
@@ -234,7 +234,7 @@ function spawnStudent(kind,row,coloumn){
     }
 }
 
-async function currencyAnimation(ctx){
+async function currencyAnimation(ctx){ // Jan Gerdes
     let red = '#f00';
     let black = '#000';
     for(let i=0; i<ctx;i++){
