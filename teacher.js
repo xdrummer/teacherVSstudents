@@ -33,13 +33,19 @@ export class Teacher{
         
         this.scale = 0.1;
         this.hitted = "assets/Jarre_zombieHit.png";
+        this.srcs = ["assets/Jarre_zombie.png","assets/Jarre_zombieL.png","assets/Jarre_zombie.png","assets/Jarre_zombieR.png"]
         this.bild = new Image();
-        this.bild.src = "assets/Jarre_zombie.png";
+        this.bild.src = this.srcs[0]
+        this.srcCounter = 0
 
         this.bild.onload = () => {
             this.width = this.bild.width * this.scale;
             this.height = this.bild.height * this.scale;
         }
+
+        /*window.setInterval(()=> {
+            this.switch();
+        },500);*/ //ToDO Kristin
     }
 
 
@@ -108,15 +114,23 @@ export class Teacher{
         if(this.healthPoints <= 0){
             this.die();
         }
+        let temp = this.bild.src
         this.bild.src = this.hitted;
         await new Promise(resolve => setTimeout(resolve, 100));
-        this.bild.src = "assets/Jarre_zombie.png";
+        this.bild.src = temp;
 
     }
 
+    /*switch = function(){ //ToDo Kristin :)
+        this.bild.src = this.srcs[this.srcCounter++]
+        if(this.srcCounter==3){
+            this.srcCounter = 0
+        }
+    }*/
+
 
     die = function(){
-        let fieldNumberNext = Math.floor(this.positionx / 100)-2
+        //let fieldNumberNext = Math.floor(this.positionx / 100)-2
         /*spiel.neuesfeld.getfelder((this.positiony-200)/100 + 1)[fieldNumberNext].l = false
         spiel.neuesfeld.getfelder((this.positiony-200)/100 + 1)[fieldNumberNext+1].l = false*/
         teachers.splice(teachers.indexOf(this), 1)
@@ -230,3 +244,4 @@ export function teach_create(){
     spiel.neuesfeld.getY(3,5);
 
 }
+
