@@ -1,6 +1,7 @@
 export var kosten = new Map()
 kosten.set("Geniesser", 150)
 kosten.set("Drucker", 350)
+kosten.set("Rahdnut", 200)
 export var students = [];
 import * as spielF from "./Spielfeld.js";
 import * as teach from "./teacher.js";
@@ -157,6 +158,18 @@ export class Geniesser extends Student {
         }
     }
 }
+export class Rahdnut extends Student {
+    constructor(x,y,  buyCooldown, healthPoints, attackCooldown, attackDamage) {
+        super(x,y, buyCooldown, healthPoints, attackCooldown, attackDamage);
+        this.src1 = "/assets/rahdnut.png"; //ToDo Komplettes Design muss ergänzt werden 
+        // ToDo Animation etc. 
+        this.skin = new Image()
+        this.skin.src = this.src1;
+
+
+        
+    }
+}
 
 
 export class Drucker extends Student {
@@ -233,6 +246,10 @@ export function spawnGeniesser(x,y){
 export function spawnDrucker(x,y){
     // x, y, buyCooldown, healthPoints, attackCooldown / Printcooldown, attackDamage
     students.push(new Drucker(x,y, 1, 150, 5000, 0));
+}
+export function spawnRahdnut(x,y){
+    // x, y, buyCooldown, healthPoints, attackCooldown / Printcooldown, attackDamage
+    students.push(new Rahdnut(x,y, 1, 500, 5000, 0));
 }
 
 

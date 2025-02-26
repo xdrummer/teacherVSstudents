@@ -216,6 +216,22 @@ function spawnStudent(kind,row,coloumn){
         }
         
     }
+    if(kind == "Rahdnut"){
+        if(cur.getScore()>=student.kosten.get("Rahdnut") && spielF.neuesfeld.getfelder(row)[coloumn].s == false ){
+            student.spawnRahdnut(x,y-1);
+            
+            cur.setScore(-student.kosten.get("Rahdnut"));
+            spielF.neuesfeld.getfelder(row)[coloumn].s = true;
+        }else{
+            if(cur.getScore()<student.kosten.get("Rahdnut")){
+                currencyAnimation(15);
+            }else{
+                console.log("Da ist schon wer");
+            }
+            
+        }
+        
+    }
 }
 
 async function currencyAnimation(ctx){
@@ -270,6 +286,6 @@ function draw() {
     
     papier.drawImage(spielF.auswahl.getImg("Geniesser"),spielF.auswahl.getX("Geniesser"),spielF.auswahl.getY("Geniesser"),spielF.auswahl.getW("Geniesser"),spielF.auswahl.getH("Geniesser"));
     papier.drawImage(spielF.auswahl.getImg("Drucker"),spielF.auswahl.getX("Drucker"),spielF.auswahl.getY("Drucker"),spielF.auswahl.getW("Drucker"),spielF.auswahl.getH("Drucker"));
-    
+    papier.drawImage(spielF.auswahl.getImg("Rahdnut"),spielF.auswahl.getX("Rahdnut"),spielF.auswahl.getY("Rahdnut"),spielF.auswahl.getW("Rahdnut"),spielF.auswahl.getH("Rahdnut"));
     drawID = window.requestAnimationFrame(draw);
 }

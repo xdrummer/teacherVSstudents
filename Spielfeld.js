@@ -126,7 +126,8 @@ export class Spielfeld{
 export class Auswahl{
     constructor(){
         this.schueler = [   ["Geniesser","/assets/geniesser.png", 300,30,100,100,new Image(),"/assets/geniesserSelected.png"],
-                            ["Drucker","/assets/printer_frame1.png", 400,30,100,100,new Image(),"/assets/printer_frame1Selected.png"]]
+                            ["Drucker","/assets/printer_frame1.png", 400,30,100,100,new Image(),"/assets/printer_frame1Selected.png"],
+                            ["Rahdnut","/assets/rahdnut.png", 500,30,100,100,new Image(),"/assets/rahdnutSelected.png"]]
 
 
         this.schueler.forEach(sch =>{
@@ -295,7 +296,7 @@ for(let i=1; i < 6; i= i+1){
 
 
     papier.fillStyle = "black"
-    papier.strokeRect(200,30,350,100)
+    papier.strokeRect(200,30,550,100)
     papier.strokeRect(300,30,0.1,100)
     papier.strokeRect(1000,1,100,50)
     papier.font = "bold 35px Arial";  // Hier können Sie die Schriftart und -größe definieren
