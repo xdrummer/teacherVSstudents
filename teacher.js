@@ -117,10 +117,10 @@ export class Teacher{
         if(this.healthPoints <= 0){
             this.die();
         }
-        let temp = this.bild.src
+        
         this.bild.src = this.hitted;
         await new Promise(resolve => setTimeout(resolve, 100));
-        this.bild.src = temp;
+        this.bild.src = this.srcs[0]
 
     }
 
