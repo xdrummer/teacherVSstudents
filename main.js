@@ -44,23 +44,6 @@ function gameUpdate(){
 }
 
 
-export function changeSR_cur(ctx){
-
-    window.clearInterval(cur_createID);
-    cur_createID = window.setInterval(()=> {
-        cur.create();
-    },ctx);
-
-}
-
-export function changeSR_teach(ctx){
-
-    window.clearInterval(teach_createID);
-    teach_createID = window.setInterval(()=>{
-        teach.teach_create();
-    }, ctx);
-
-}
 
 function onload() {
 
