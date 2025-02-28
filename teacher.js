@@ -1,12 +1,24 @@
 import * as studi from "./student.js";
 import * as spiel from "./Spielfeld.js";
-
+import * as main from "./main.js";
 
 // Speicherort aller momentan existierender Lehrer
 export var teachers = [];
 
 // Maximale Anzahl der Lehrer
 export var spawn_limit = 1; 
+
+function incr_spawnlimit(){
+    
+    spawn_limit = spawn_limit * 2;
+    
+}
+
+function incr_spawnerate(){
+    
+    main.teach_spawnrate = main.teach_spawnrate - 1000;
+    
+}
 
 export class Teacher{
     constructor(healthPoints, speed, attackCooldown, attackDamage){
