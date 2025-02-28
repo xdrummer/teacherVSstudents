@@ -44,7 +44,9 @@ window.addEventListener("load", () => {
 
 function gameUpdate(){
 
-
+    teach_createID = window.setInterval(()=>{
+            teach.teach_create();
+        }, teach_spawnrate);
 
 }
 
