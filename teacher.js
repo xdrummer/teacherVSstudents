@@ -14,7 +14,7 @@ function incr_spawnlimit(){
     
 }
 
-function incr_spawnerate(){
+function incr_spawnrate(){
     
     main.teach_spawnrate = main.teach_spawnrate - 1000;
     
