@@ -7,7 +7,10 @@ import * as student from "./student.js";
 var flipchart = document.getElementById("Spielfeld");
 var papier = flipchart.getContext("2d");
 
-var selectedStudent;
+var selectedStuden
+
+var teach_spawnrate = 20000;
+
 
 
 // Zeit in ms wie lange der Spieler zeit hat sich vorzubereiten bevor der erste Lehrer kommt
@@ -27,6 +30,7 @@ var teach_updID;
 var teach_createID;
 var spielF_UpdID;
 var printer_framesID;
+var teach_spawnlimitID;
 
 
 
@@ -39,6 +43,7 @@ window.addEventListener("load", () => {
 });
 
 function gameUpdate(){
+
 
 
 }
@@ -90,6 +95,10 @@ function onload() {
             teach.teach_create();
         }, 20000);
     }, preparetime); 
+    
+    teach_spawnlimitID = window.setInterval (()=> {
+        teach.incr_spawnlimit();
+    }, 10000);
 
 
 
