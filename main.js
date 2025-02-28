@@ -32,8 +32,9 @@ var spielF_UpdID;
 var printer_framesID;
 var teach_spawnlimitID;
 
-
-
+/*var gameover = false;
+var gameoverImg = new Image();
+var gameoverSrc = "gameoverscreen.png";*/
 
 window.addEventListener("load", () => {
     // Einfaches onload im body funktioniert warum auch immer nicht
@@ -43,14 +44,29 @@ window.addEventListener("load", () => {
 });
 
 function gameUpdate(){
+<<<<<<< Updated upstream
 
     teach_createID = window.setInterval(()=>{
             teach.teach_create();
         }, teach_spawnrate);
+=======
+   /* if(!gameover){
+        checkGameover();
+    }*/
+>>>>>>> Stashed changes
 
 }
 
+/*function checkGameover(){
+    if(gameover) return
 
+    for(let i=0; i<teach.teachers.length; i++){
+        if(teach.teachers[i].positionx <= 0){
+            gameover = true;
+            return
+        }
+    }
+}*/
 
 function onload() {
 
@@ -245,6 +261,11 @@ async function currencyAnimation(ctx){ // Jan Gerdes
 }
 
 function draw() {
+    /*if(gameover = true){
+        papier.drawImage(gameoverImg, 0, 0, flipchart.width, flipchart.height);
+        return;
+    }*/
+
     papier.clearRect(0, 0, flipchart.width, flipchart.height);
     spielF.Spielfeldzeichnen();
     
