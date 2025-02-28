@@ -239,6 +239,13 @@ for(let i=1; i < 6; i= i+1){
     papier.font = "bold 35px Arial";  // Hier können Sie die Schriftart und -größe definieren
     papier.fillText("Menü", 1004, 37)
     initDetection()
+
+    papier.strokeRect(300, 130, 100, 30);
+    papier.fillText("150", 318, 157);
+    papier.strokeRect(400, 130, 100, 30);
+    papier.fillText("350", 418, 157);
+    papier.strokeRect(500, 130, 100, 30);
+    papier.fillText("200", 518, 157);
     
 
 }
