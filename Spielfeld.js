@@ -60,7 +60,7 @@ export class Spielfeld{
 
 
 
-export class Auswahl{ // Jan Gerdes
+export class Auswahl{ 
     constructor(){
         this.schueler = [   ["Geniesser","/assets/geniesser.png", 300,30,100,100,new Image(),"/assets/geniesserSelected.png"],
                             ["Drucker","/assets/printer_frame1.png", 400,30,100,100,new Image(),"/assets/printer_frame1Selected.png"],
@@ -263,7 +263,7 @@ for(let i=1; i < 6; i= i+1){
 
 }
 
-export function spielfeldUpd(){ // Jan Gerdes
+export function spielfeldUpd(){ 
 
 
 
@@ -282,7 +282,7 @@ export function spielfeldUpd(){ // Jan Gerdes
 
 }
 
-function initDetection(){ // Jan Gerdes
+function initDetection(){ 
     for(let i = 1; i<=5; i++){
         let array = neuesfeld.getfelder(i)
         if(array.length == 9){

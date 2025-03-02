@@ -1,4 +1,4 @@
-// Fast komplett Jan Gerdes
+
 
 export var kosten = new Map()
 kosten.set("Geniesser", 150)

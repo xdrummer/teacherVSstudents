@@ -194,7 +194,7 @@ function gameStart() {
                 break;
             }
         }
-        if(spielF.auswahl.contains(mouseX,mouseY,"b")){ // ab hier Jan Gerdes
+        if(spielF.auswahl.contains(mouseX,mouseY,"b")){ 
             id = spielF.auswahl.contains(mouseX,mouseY,"i");
             
             
@@ -243,7 +243,7 @@ function gameStart() {
 
 
 
-function spawnStudent(kind,row,coloumn){ // Jan Gerdes
+function spawnStudent(kind,row,coloumn){ 
     let x = spielF.neuesfeld.getX(row,coloumn);
     let y = spielF.neuesfeld.getY(row,coloumn);
 
@@ -297,7 +297,7 @@ function spawnStudent(kind,row,coloumn){ // Jan Gerdes
     }
 }
 
-async function currencyAnimation(ctx){ // Jan Gerdes
+async function currencyAnimation(ctx){ 
     let red = '#f00';
     let black = '#000';
     for(let i=0; i<ctx;i++){

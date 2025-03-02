@@ -46,12 +46,9 @@ export class Teacher{
         this.scale = 0.1;
         this.hitted = "assets/Jarre_zombieHit.png";
         this.srcs = ["assets/Jarre_zombie.png","assets/Jarre_zombieL.png","assets/Jarre_zombie.png","assets/Jarre_zombieR.png"]
-        this.bilder = [new Image(),new Image(),new Image(),new Image()]
-        this.bilder[0].src = this.srcs[0]
-        this.bilder[1].src = this.srcs[1]
-        this.bilder[2].src = this.srcs[2]
-        this.bilder[3].src = this.srcs[3]
-        this.bild = this.bilder[0]
+        
+        this.bild = new Image()
+        this.bild.src = this.srcs[0]
         this.srcCounter = 0
 
         this.bild.onload = () => {
@@ -129,33 +126,37 @@ export class Teacher{
         if(this.healthPoints <= 0){
             this.die();
         }
-        
+        this.temp = this.bild.src;
         this.bild.src = this.hitted;
+        console.log("^1")
         await new Promise(resolve => setTimeout(resolve, 100));
-        this.bild.src = this.srcs[0]
+        this.bild.src = this.temp;
+        console.log("^2")
 
     }
 
     switch = function(){ //ToDo Kristin :)
-        
-        let now = Date.now();
+        if(this.bild.src != this.hitted){
+            let now = Date.now();
         
                 if(now - this.lastChanged >= 300){
         
                     
                     this.srcCounter++
-                    if(this.bilder[this.srcCounter].complete){
-                    this.bild = this.bilder[this.srcCounter]
+                    
+                    this.bild.src = this.srcs[this.srcCounter]
                     this.width = this.bild.width * this.scale;
                     this.height = this.bild.height * this.scale;
                     if(this.srcCounter==3){
                     this.srcCounter = 0
             }
-        }
+        
                     this.lastChanged = now;
         
                     
                 }
+        }
+        
         
         
         
