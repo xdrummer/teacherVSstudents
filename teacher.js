@@ -14,9 +14,11 @@ export function incr_spawnlimit(){
     
 }
 
-function incr_spawnrate(){
+export function incr_spawnrate(){
+    if(main.teach_spawnrate>5000){
+        main.teach_spawnrate = main.teach_spawnrate - 1000;
+    }
     
-    main.teach_spawnrate = main.teach_spawnrate - 1000;
     
 }
 

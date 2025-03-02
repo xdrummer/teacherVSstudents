@@ -169,6 +169,7 @@ function gameStart() {
     
     teach_spawnlimitID = window.setInterval (()=> {
         teach.incr_spawnlimit();
+        teach.incr_spawnrate()
     }, 10000);
 
 
