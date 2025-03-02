@@ -59,14 +59,52 @@ function checkGameover(){
         if(teach.teachers[i].positionx <= 165){
             gameover = true;
             stopGame();
+            showGameOverScreen();
+            enableRestartListener(); 
             return;
         }
     }
 }
 
+function enableRestartListener(){
+    flipchart.addEventListener("click", restartGameListener);
+}
+
+function restartGameListener(e) {
+    const rect = flipchart.getBoundingClientRect();
+    const mouseX = e.clientX - rect.left;
+    const mouseY = e.clientY - rect.top;
+
+    if (mouseX >= 0 && mouseX <= flipchart.width && mouseY >= 0 && mouseY <= flipchart.height) {
+        restartGame();
+    }
+}
+
+function showGameOverScreen() {
+    papier.clearRect(0, 0, flipchart.width, flipchart.height); // Leert den Canvas
+    papier.drawImage(gameoverImg, 0, 0, flipchart.width, flipchart.height); // Zeichnet das Game Over Bild
+}
+
+function restartGame() {
+    gameover = false;
+   
+    teach.teachers.length = 0;
+    student.students.length = 0;
+    cur.currencies.length = 0;
+
+    cancelAnimationFrame(drawID)
+
+    papier.clearRect(0, 0, flipchart.width, flipchart.height); 
+
+    gameStart();
+
+    flipchart.removeEventListener("click", restartGameListener);
+
+}
+
 function stopGame() {
     clearInterval(gameUpdateID);
-    clearInterval(drawID);
+    cancelAnimationFrame(drawID);
     clearInterval(cur_updateID);
     clearInterval(cur_createID);
     clearInterval(cur_DespawnID);
@@ -273,8 +311,7 @@ async function currencyAnimation(ctx){ // Jan Gerdes
 
 function draw() {
     if(gameover){
-        papier.clearRect(0, 0, flipchart.width, flipchart.height);
-        papier.drawImage(gameoverImg, 0, 0, flipchart.width, flipchart.height);
+        showGameOverScreen();
         return;
     }
 
