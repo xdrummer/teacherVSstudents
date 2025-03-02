@@ -87,7 +87,7 @@ function showGameOverScreen() {
 }
 
 function restartGame() {
-    gameover = false;
+    /*gameover = false;
     document.getElementById('cur_board').style.visibility = "visible";
     cur.setScore(-cur.getScore())
     teach.teachers.length = 0;
@@ -100,7 +100,9 @@ function restartGame() {
 
     gameStart();
 
-    flipchart.removeEventListener("click", restartGameListener);
+    flipchart.removeEventListener("click", restartGameListener);*/
+    location.reload();
+
 
 }
 
