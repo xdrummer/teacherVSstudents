@@ -13,7 +13,7 @@ var teach_spawnrate = 20000;
 
 var gameover = false;
 var gameoverImg = new Image();
-gameoverImg.src = "assets/gameoverende.jpg";
+gameoverImg.src = "assets/gameover2.jpg";
 
 // Zeit in ms wie lange der Spieler zeit hat sich vorzubereiten bevor der erste Lehrer kommt
 // 1 sek = 1000
