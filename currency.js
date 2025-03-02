@@ -7,7 +7,7 @@ export var currencies = [];
 // aktueller Währungsstand des Spielers
 export var score = 0;
 
-export var despawn_timer = 25;
+export var despawn_timer = 20;
 
 
 

@@ -141,7 +141,7 @@ function gameStart() {
     cur.create()
     cur_createID = window.setInterval(()=> {
         cur.create();
-    },10000);
+    },8000);
 
     cur_DespawnID = window.setInterval(()=> {
         cur.age_upd();
