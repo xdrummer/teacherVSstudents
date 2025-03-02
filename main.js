@@ -81,13 +81,15 @@ function restartGameListener(e) {
 }
 
 function showGameOverScreen() {
+    document.getElementById('cur_board').style.visibility = "hidden";
     papier.clearRect(0, 0, flipchart.width, flipchart.height); // Leert den Canvas
     papier.drawImage(gameoverImg, 0, 0, flipchart.width, flipchart.height); // Zeichnet das Game Over Bild
 }
 
 function restartGame() {
     gameover = false;
-   
+    document.getElementById('cur_board').style.visibility = "visible";
+    cur.setScore(-cur.getScore())
     teach.teachers.length = 0;
     student.students.length = 0;
     cur.currencies.length = 0;
