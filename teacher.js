@@ -8,7 +8,7 @@ export var teachers = [];
 // Maximale Anzahl der Lehrer
 export var spawn_limit = 1; 
 
-function incr_spawnlimit(){
+export function incr_spawnlimit(){
     
     spawn_limit = spawn_limit * 2;
     
