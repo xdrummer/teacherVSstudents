@@ -7,11 +7,13 @@ import * as student from "./student.js";
 var flipchart = document.getElementById("Spielfeld");
 var papier = flipchart.getContext("2d");
 
-var selectedStuden
+var selectedStudent = null;
 
 var teach_spawnrate = 20000;
 
-
+var gameover = false;
+var gameoverImg = new Image();
+gameoverImg.src = "assets/gameoverende.jpg";
 
 // Zeit in ms wie lange der Spieler zeit hat sich vorzubereiten bevor der erste Lehrer kommt
 // 1 sek = 1000
@@ -32,43 +34,52 @@ var spielF_UpdID;
 var printer_framesID;
 var teach_spawnlimitID;
 
-/*var gameover = false;
-var gameoverImg = new Image();
-var gameoverSrc = "gameoverscreen.png";*/
 
 window.addEventListener("load", () => {
     // Einfaches onload im body funktioniert warum auch immer nicht
     // habe daher einfach nen event listener mit load genutzt das funktioniert
-    onload();                                                                   
+    gameStart();                                                                   
                                                                                 
 });
 
 function gameUpdate(){
-<<<<<<< Updated upstream
 
-    teach_createID = window.setInterval(()=>{
-            teach.teach_create();
-        }, teach_spawnrate);
-=======
-   /* if(!gameover){
+    if(!gameover){
         checkGameover();
-    }*/
->>>>>>> Stashed changes
+    }
 
 }
 
-/*function checkGameover(){
-    if(gameover) return
+function checkGameover(){
+    if(gameover) {
+        return;
+    }
 
     for(let i=0; i<teach.teachers.length; i++){
-        if(teach.teachers[i].positionx <= 0){
+        if(teach.teachers[i].positionx <= 165){
             gameover = true;
-            return
+            stopGame();
+            return;
         }
     }
-}*/
+}
 
-function onload() {
+function stopGame() {
+    clearInterval(gameUpdateID);
+    clearInterval(drawID);
+    clearInterval(cur_updateID);
+    clearInterval(cur_createID);
+    clearInterval(cur_DespawnID);
+    clearInterval(student_updateID);
+    clearInterval(teach_updID);
+    clearInterval(teach_createID);
+    clearInterval(spielF_UpdID);
+    clearInterval(teach_spawnlimitID);
+
+    console.log("Game Over!");
+};
+
+function gameStart() {
 
     
     
@@ -261,10 +272,11 @@ async function currencyAnimation(ctx){ // Jan Gerdes
 }
 
 function draw() {
-    /*if(gameover = true){
+    if(gameover){
+        papier.clearRect(0, 0, flipchart.width, flipchart.height);
         papier.drawImage(gameoverImg, 0, 0, flipchart.width, flipchart.height);
         return;
-    }*/
+    }
 
     papier.clearRect(0, 0, flipchart.width, flipchart.height);
     spielF.Spielfeldzeichnen();
